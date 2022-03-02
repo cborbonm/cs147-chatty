@@ -69,7 +69,7 @@ export default function App() {
     return (
       <View style={styles.container}>
         <View style={styles.titleRow}>
-          <Image style={styles.titleLogo} source={require('./assets/spotify-logo.png')}></Image>
+          <Image style={styles.titleLogo} source={require('./assets/Icons/spotify-logo.png')}></Image>
             <Text style={styles.titleText}>My Top Tracks</Text>
         </View>
         <View style={styles.subContainer}>
@@ -98,8 +98,8 @@ export default function App() {
         </NavigationContainer>
       : 
       <>
-        <Image style={styles.logoText} source={require('./assets/chatty.png')}></Image>
-        <Image style={styles.loginLogo} source={require('./assets/logo.png')}></Image>
+        <Image style={styles.logoText} source={require('./assets/Icons/chatty.png')}></Image>
+        <Image style={styles.loginLogo} source={require('./assets/Icons/logo.png')}></Image>
         <Pressable style={styles.loginButton} onPress={() => promptAsync()}>
           <Text style={styles.loginText}>Login</Text>
         </Pressable>
