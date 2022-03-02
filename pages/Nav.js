@@ -6,7 +6,6 @@ import {
 } from 'react-native';
 import Colors from "../Themes/colors";
 import { MaterialCommunityIcons, Ionicons, FontAwesome } from '@expo/vector-icons';
-import colors from '../Themes/colors';
 
 export function Nav({ }) {
     return (

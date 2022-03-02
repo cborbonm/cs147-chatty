@@ -11,79 +11,8 @@ import {
 import ForumQuestion from './ForumQuestion';
 import Colors from "../Themes/colors";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import colors from '../Themes/colors';
 
-const QUESTIONS = [
-    {
-        username: 'Xiaofeng',
-        key: 1,
-        timestamp: '1 min ago',
-        question: 'How do you say 看热闹 in English?',
-        comments: 1,
-    },
-    {
-        username: 'Delali',
-        key: 2,
-        timestamp: '5 min ago',
-        question: 'How should I order a café at a restaurant?',
-        comments: 0,
-    },
-    {
-        username: 'Masahiro',
-        key: 3,
-        timestamp: '6 min ago',
-        question: 'Should I take off my shoes when I go to someone’s house in the US?',
-        comments: 5,
-    },
-    {
-        username: 'Fernand',
-        key: 4,
-        timestamp: '10 min ago',
-        question: 'Does this sound natural?',
-        comments: 2,
-    },
-    {
-        username: 'Andrea',
-        key: 5,
-        timestamp: '12 min ago',
-        question: 'Do we say “my family is” or “my family are”?',
-        comments: 3,
-    },{
-        username: 'Xiaofeng',
-        key: 6,
-        timestamp: '1 min ago',
-        question: 'How do you say 看热闹 in English?',
-        comments: 1,
-    },
-    {
-        username: 'Delali',
-        key: 7,
-        timestamp: '5 min ago',
-        question: 'How should I order a café at a restaurant?',
-        comments: 0,
-    },
-    {
-        username: 'Masahiro',
-        key: 8,
-        timestamp: '6 min ago',
-        question: 'Should I take off my shoes when I go to someone’s house in the US?',
-        comments: 5,
-    },
-    {
-        username: 'Fernand',
-        key: 9,
-        timestamp: '10 min ago',
-        question: 'Does this sound natural?',
-        comments: 2,
-    },
-    {
-        username: 'Andrea',
-        key: 10,
-        timestamp: '12 min ago',
-        question: 'Do we say “my family is” or “my family are”?',
-        comments: 3,
-    },
-];
+import { questions } from '../data/questions';
 
 export function Forum({ }) {
     return (
@@ -93,7 +22,7 @@ export function Forum({ }) {
                 <MaterialCommunityIcons name="menu-down" size={24} color={Colors.chatty} />
             </View>
             <FlatList
-                data={QUESTIONS}
+                data={questions}
                 renderItem={({item}) => 
                         <ForumQuestion 
                             username={item.username}
