@@ -9,19 +9,19 @@ import {
 import Colors from "../Themes/colors";
 import { Ionicons } from '@expo/vector-icons';
 
-export function Forum({ name, question, timestamp}) {
+export function Nav({ name, question, timestamp}) {
     return (
-        <View style={styles.container}>
-            <Text>Forum</Text>
-        </View>
+      <View>
+        <Text>Nav</Text>
+      </View>
     );
-}
+  }
   
-export default Forum;
+export default Nav;
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: Colors.background,
+        backgroundColor: Colors.chatty,
         justifyContent: 'center',
         flex: 1,
     },

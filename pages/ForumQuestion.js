@@ -9,15 +9,15 @@ import {
 import Colors from "../Themes/colors";
 import { Ionicons } from '@expo/vector-icons';
 
-export function Forum({ name, question, timestamp}) {
+export function ForumQuestion({ name, question, timestamp}) {
     return (
-        <View style={styles.container}>
-            <Text>Forum</Text>
-        </View>
+      <View>
+        <Text>Forum</Text>
+      </View>
     );
-}
+  }
   
-export default Forum;
+export default ForumQuestion;
 
 const styles = StyleSheet.create({
     container: {

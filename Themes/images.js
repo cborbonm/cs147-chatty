@@ -1,5 +1,5 @@
 const images = {
-  spotify: require("../assets/spotify-logo.png"),
+  chatty: require("../assets/Icons/logo.png"),
 };
 
 export default images;
