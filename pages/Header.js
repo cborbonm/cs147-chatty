@@ -18,7 +18,7 @@ export function Header({ name, question, timestamp}) {
     return (
         <SafeAreaView>
             <View style={styles.header_container}>
-                <Text style={styles.header_text}>Home</Text>
+                <Text style={styles.header_text}>Header</Text>
             </View>
         </SafeAreaView>
     );
