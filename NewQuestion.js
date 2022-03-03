@@ -3,7 +3,7 @@ import Colors from "./Themes/colors";
 
 export default function NewQuestion() {
   return (
-    <View>
+    <View style={styles.container}>
         <View style={styles.subContainer}> 
           <Text style={styles.questionTopic}>Language</Text>
           <View style={styles.questionsDiv}>
@@ -33,53 +33,11 @@ export default function NewQuestion() {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.background,
-    justifyContent: 'center',
     display: "flex",
     flex: 1,
   },
   subContainer: {
-    top: 20,
     display: "flex",
-  },
-  loginButton: {
-    backgroundColor: "white",
-    height: 40,
-    width: 225,
-    borderRadius: 100,
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-    alignItems: "center",
-    alignSelf: "center",
-    margin: 10,
-  },
-  logoText: {
-    alignSelf: "center",
-  },
-  loginLogo: {
-    height: 66,
-    width: 60,
-    alignSelf: "center",
-    margin: 25,
-  },
-  loginText: {
-    color: "#4F1271",
-    textTransform: "uppercase",
-    fontFamily: "Helvetica",
-    fontWeight: "bold",
-  },
-  titleRow: {
-    alignSelf: "center",
-    position: "absolute",
-    justifyContent: "center",
-    display: "flex",
-    paddingBottom: 50,
-  },
-  titleText: {
-    color: "#4F1271",
-    fontFamily: "Helvetica",
-    fontSize: 24,
-    fontWeight: '400',
   },
   questionTopic: {
     fontSize: 15,
@@ -101,10 +59,10 @@ const styles = StyleSheet.create({
     display: "flex",
   },
   freeform: {
-    bottom: -40,
     display: "flex",
     alignSelf: 'center',
     backgroundColor: Colors.lighter_purple,
+    margin: 20,
     borderRadius: 50,
   },
   writeyourown: {
