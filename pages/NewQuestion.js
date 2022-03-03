@@ -33,7 +33,15 @@ export default function NewQuestion( {navigation} ) {
             <Text style={styles.question}>Is it acceptable to do this?</Text>
           </View>
         </View>
-        <Pressable style={styles.freeform}><Text style={styles.writeyourown}>Or write your own!</Text></Pressable>
+        
+        <Pressable 
+          onPress={ () => console.log("writing my own question") }
+          style={({ pressed }) => [
+            { opacity: pressed ? 0.5 : 1.0 }, styles.freeform
+          ]}
+        >
+          <Text style={styles.writeyourown}>Or write your own!</Text>
+        </Pressable>
     </View>
   );
 }

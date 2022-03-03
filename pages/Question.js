@@ -12,7 +12,7 @@ import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 
 const windowWidth = Dimensions.get('window').width;
 
-export function ForumQuestion({ username, language, timestamp, question, comments, navigation}) {
+export function Question({ username, language, timestamp, question, comments, navigation}) {
     return (
         <Pressable // press whole row
             onPress={ () => console.log("pressed question", timestamp) /*navigation.navigate("SongDetail", { question: question })(/) */ } 
@@ -21,8 +21,7 @@ export function ForumQuestion({ username, language, timestamp, question, comment
               backgroundColor: pressed ? Colors.pressed_background : Colors.background,
             },
             styles.post
-            ]}
-        >
+        ]}>
             <View style={styles.left}>
                 <FontAwesome name="user-circle" size={40} color={Colors.chatty} />
             </View>
@@ -42,7 +41,7 @@ export function ForumQuestion({ username, language, timestamp, question, comment
     );
   }
   
-export default ForumQuestion;
+export default Question;
 
 const styles = StyleSheet.create({
     post: {

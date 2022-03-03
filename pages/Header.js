@@ -22,10 +22,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import logo from "../assets/Icons/chatty.png";
+import colors from '../Themes/colors';
 
 const windowWidth = Dimensions.get('window').width;
 
-export function Header({ page }) {
+export function Header({ page, navigation }) {
 
     return (
         <SafeAreaView>
@@ -33,9 +34,15 @@ export function Header({ page }) {
                 <View style={styles.header_home}>
                     <Image source={logo} style={styles.logo}/>
                     <Pressable
-                        onPress={ () => console.log("pressed new question") /*navigation.navigate("SongDetail", { question: question })(/) */ } 
+                        onPress={ () => {
+                            navigation.navigate("NewQuestion");
+                            }
+                        }
+                        style={({ pressed }) => [
+                            { opacity: pressed ? 0.5 : 1.0 }
+                        ]}
                     >
-                    <MaterialCommunityIcons name="square-edit-outline" size={36} color={Colors.chatty} />
+                        <MaterialCommunityIcons name="square-edit-outline" size={36} color={Colors.chatty}/>
                     </Pressable>
                 </View>
             ) : (
@@ -76,5 +83,5 @@ const styles = StyleSheet.create({
         height: 36,
         width: undefined,
         aspectRatio: 364/98,
-    }
+    },
 });
