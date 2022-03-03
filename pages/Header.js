@@ -1,3 +1,13 @@
+/* Should use the Stack Navigator header for headers on all other pages, but hide Stack Navigator header on pages
+ *
+ * "Home"
+ * "Match"
+ * "Chat"
+ * "Me"
+ * 
+ * and use Header.js instead.
+ */
+
 import {
     StyleSheet,
     Text,
@@ -14,23 +24,25 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import logo from "../assets/Icons/chatty.png";
 
 const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
-const HEADER_TEXT = "New Question";
-const isHome = true;
 
-export function Header({ name, question, timestamp}) {
+export function Header({ page }) {
+
     return (
         <SafeAreaView>
-            { isHome ? (
+            { page == "Home" ? (
                 <View style={styles.header_home}>
                     <Image source={logo} style={styles.logo}/>
+                    <Pressable
+                        onPress={ () => console.log("pressed new question") /*navigation.navigate("SongDetail", { question: question })(/) */ } 
+                    >
                     <MaterialCommunityIcons name="square-edit-outline" size={36} color={Colors.chatty} />
+                    </Pressable>
                 </View>
-                ) : (
-                <View style={styles.header_page}>
-                    <Text style={styles.header_text}>{HEADER_TEXT}</Text>
+            ) : (
+                <View style={styles.header_home}>
+                    <Image source={logo} style={styles.logo}/>
                 </View>
-                )
+            )
             }
         </SafeAreaView>
     );

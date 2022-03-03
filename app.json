@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "assign-3-spotify",
-    "slug": "assign-3-spotify",
+    "name": "chatty",
+    "slug": "chatty",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

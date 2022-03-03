@@ -5,6 +5,7 @@ const colors = {
   purplegrey: "#4A4063",
   lighter_purplegrey: "#7F7598",
   background: "#F9F6F1",
+  pressed_background: "#efedeb",
 };
 
 export default colors;
