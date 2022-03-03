@@ -1,7 +1,15 @@
-import { StyleSheet, Text, SafeAreaView, Pressable, Image, View, FlatList } from "react-native";
-import Colors from "./Themes/colors";
+import { 
+  StyleSheet, 
+  Text, 
+  SafeAreaView, 
+  Pressable, 
+  Image, 
+  View, 
+  FlatList } 
+from "react-native";
+import Colors from "../Themes/colors";
 
-export default function NewQuestion() {
+export default function NewQuestion( {navigation} ) {
   return (
     <View style={styles.container}>
         <View style={styles.subContainer}> 
