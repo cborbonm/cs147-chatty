@@ -4,6 +4,7 @@ import Colors from "./Themes/colors";
 import Forum from "./pages/Forum";
 import NewQuestionPromptList from "./pages/NewQuestionPromptList";
 import NewQuestion from "./pages/NewQuestion";
+import LanguageDropDown from "./pages/LanguageDropDown";
 import Question from "./pages/Question";
 
 import Header from "./pages/Header";
@@ -45,6 +46,7 @@ export default function App() {
           <Stack.Screen name="Home" component={Home} options={{headerShown: false}} />
           <Stack.Screen name="NewQuestionPromptList" component={NewQuestionPromptList} options={{ title: 'New Question' }}/>
           <Stack.Screen name="NewQuestion" component={NewQuestion} options={{ title: 'New Question' }}/>
+          <Stack.Screen name="LanguageDropDown" component={LanguageDropDown} options={{ title: 'Choose Language' }}/>
           <Stack.Screen name="Question" component={Question} options={{ title: 'Question' }}/>
         </Stack.Group>
       </Stack.Navigator>
