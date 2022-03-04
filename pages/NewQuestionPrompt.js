@@ -8,12 +8,12 @@ import {
     FlatList } 
   from "react-native";
 import colors from "../Themes/colors";
-  import Colors from "../Themes/colors";
+import Colors from "../Themes/colors";
   
-  export default function NewQuestion( {navigation, prompt} ) {
+export default function NewQuestionPrompt( {navigation, prompt} ) {
     return (
         <Pressable // press whole row
-            onPress={ () => console.log("pressed prompt") /*navigation.navigate("SongDetail", { question: question })(/) */ } 
+            onPress={ () => navigation.navigate("NewQuestion", { prompt: prompt }) } 
             style={({ pressed }) => [
             {
                 backgroundColor: pressed ? Colors.pressed_background : "white",
@@ -23,19 +23,19 @@ import colors from "../Themes/colors";
             <Text style={styles.question}>{prompt}</Text>
         </Pressable>
     );
-  }
+}
   
-  const styles = StyleSheet.create({
+const styles = StyleSheet.create({
     container: {
         display: "flex",
         flexDirection: "row",
         width: "100%",
     },
     question: {
-      padding: 15,
-      fontSize: 16,
-      display: "flex",
-      justifyContent: "flex-start",
+        padding: 15,
+        fontSize: 16,
+        display: "flex",
+        justifyContent: "flex-start",
     },
-  });
+});
   

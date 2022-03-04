@@ -5,6 +5,7 @@ import { myTopTracks, albumTracks } from "./utils/apiOptions";
 import { REDIRECT_URI, SCOPES, CLIENT_ID, ALBUM_ID } from "./utils/constants";
 import Colors from "./Themes/colors";
 import Forum from "./pages/Forum";
+import NewQuestionPromptList from "./pages/NewQuestionPromptList";
 import NewQuestion from "./pages/NewQuestion";
 import Question from "./pages/Question";
 
@@ -19,7 +20,7 @@ const Stack = createStackNavigator();
 function Home({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
-        <Header page="Home" navigation={navigation} />
+        <Header page="Home" navigation={navigation}/>
         <Forum />
         <Nav />
     </SafeAreaView>
@@ -37,6 +38,7 @@ export default function App() {
         }}>
           {/* pass props: https://stackoverflow.com/questions/60439210/how-to-pass-props-to-screen-component-with-a-tab-navigator */}
           <Stack.Screen name="Home" component={Home} options={{headerShown: false}} />
+          <Stack.Screen name="NewQuestionPromptList" component={NewQuestionPromptList} options={{ title: 'New Question' }}/>
           <Stack.Screen name="NewQuestion" component={NewQuestion} options={{ title: 'New Question' }}/>
           <Stack.Screen name="Question" component={Question} options={{ title: 'Question' }}/>
         </Stack.Group>

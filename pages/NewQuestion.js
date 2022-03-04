@@ -1,101 +1,65 @@
-import { 
-  StyleSheet, 
-  Text, 
-  SafeAreaView, 
-  Pressable, 
-  Image, 
-  View, 
-  FlatList } 
-from "react-native";
+import {
+    StyleSheet,
+    Text,
+    View,
+    Image,
+    Dimensions,
+    Pressable,
+} from 'react-native';
+
 import Colors from "../Themes/colors";
+import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 
-import NewQuestionPrompt from "./NewQuestionPrompt";
+const windowWidth = Dimensions.get('window').width;
 
-export default function NewQuestion( {navigation} ) {
-  return (
-    <View style={styles.container}>
-        <View style={styles.subContainer}> 
-          <Text style={styles.questionTopic}>Language</Text>
-          <View style={styles.questionsDiv}>
-            <NewQuestionPrompt prompt="How do you say this?" />
-            <View style={styles.divider}/>
-            <NewQuestionPrompt prompt="What does this mean?" />
-            <View style={styles.divider}/>
-            <NewQuestionPrompt prompt="Does this sound natural?" />
-            <View style={styles.divider}/>
-            <NewQuestionPrompt prompt="What's the difference between...?" />
-            <View style={styles.divider}/>
-            <NewQuestionPrompt prompt="Can you use ... in a sentence?" />
-          </View>
-          <Text style={styles.questionTopic}>Speaking</Text>
-          <View style={styles.questionsDiv}>
-            <NewQuestionPrompt prompt="How's my pronounciation?" />
-            <View style={styles.divider}/>
-            <NewQuestionPrompt prompt="How do you pronounce...?" />
-          </View>
-          <Text style={styles.questionTopic}>Culture</Text>
-          <View style={styles.questionsDiv}>
-            <NewQuestionPrompt prompt="What should I say when...?" />
-            <View style={styles.divider}/>
-            <NewQuestionPrompt prompt="What should I do when...?" />
-            <View style={styles.divider}/>
-            <NewQuestionPrompt prompt="Is it acceptable to do this?" />
-          </View>
-        </View>
-
-        <Pressable 
-          onPress={ () => console.log("writing my own question") }
-          style={({ pressed }) => [
-            { opacity: pressed ? 0.5 : 1.0 }, styles.freeform
-          ]}
-        >
-          <Text style={styles.writeyourown}>Or write your own!</Text>
-        </Pressable>
-    </View>
-  );
+export function NewQuestion({ prompt, navigation}) {
+    return (
+        <Text>{prompt}</Text>
+    );
 }
 
+export default NewQuestion;
+
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: Colors.background,
-    display: "flex",
-    flex: 1,
-  },
-  subContainer: {
-    display: "flex",
-  },
-  questionTopic: {
-    fontSize: 15,
-    textTransform: 'uppercase',
-    color: Colors.purplegrey,
-    margin: 15,
-    display: "flex",
-  },
-  questionsDiv: {
-    backgroundColor: 'white',
-    borderColor: Colors.lavender,
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  freeform: {
-    display: "flex",
-    alignSelf: 'center',
-    backgroundColor: Colors.lighter_purple,
-    margin: 20,
-    borderRadius: 50,
-  },
-  writeyourown: {
-    color: 'white',
-    padding: 10,
-    fontSize: 15,
-    fontWeight: '500',
-  },
-  divider: {
-    width: "95%",
-    height: 1,
-    backgroundColor: Colors.lavender,
-  },
+    post: {
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        paddingVertical: 10,
+        paddingHorizontal: 30,
+        borderColor: Colors.lavender,
+        borderTopWidth: 1,
+        width: windowWidth,
+    },
+    left: {
+        flex: 15,
+    },
+    right: {
+        flex: 85,
+        paddingLeft: 0,
+    },
+    name: {
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
+    timestamp: {
+        fontSize: 16,
+        color: Colors.purplegrey,
+    },
+    name_timestamp_container: {
+        marginBottom: 10,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+    question: {
+        fontSize: 16,
+    },
+    comments_container: {
+        marginTop: 10,
+        flexDirection: "row",
+        alignItems: "center",
+    },
+    num_comments: {
+        paddingLeft: 5,
+        fontSize: 16,
+    }
 });

@@ -22,7 +22,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import logo from "../assets/Icons/chatty.png";
-import colors from '../Themes/colors';
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -35,7 +34,7 @@ export function Header({ page, navigation }) {
                     <Image source={logo} style={styles.logo}/>
                     <Pressable
                         onPress={ () => {
-                            navigation.navigate("NewQuestion");
+                            navigation.navigate("NewQuestionPromptList");
                             }
                         }
                         style={({ pressed }) => [
