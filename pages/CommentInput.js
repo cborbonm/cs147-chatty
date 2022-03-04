@@ -8,11 +8,10 @@ import {
     Text, 
     TextInput,
     SafeAreaView, 
-    Pressable, 
-    Image, 
+    Button,
     View, 
-    FlatList } 
-  from "react-native";
+} 
+from "react-native";
 
 import Colors from "../Themes/colors";
 import { FontAwesome } from '@expo/vector-icons';
@@ -23,17 +22,26 @@ const CommentInput = () => {
     return (
       <SafeAreaView>
         <View style={styles.bottom_action}>
+          <View alignItems='baseline' flexDirection='row' flex={1}>
             <View style={styles.comment_bar}>
               <FontAwesome name="user-circle" size={36} color={Colors.chatty} />
-                <TextInput
-                  style={styles.input}
-                  onChangeText={onChangeText}
-                  value={text}
-                  placeholder="Type a comment..."
-                  placeholderTextColor={Colors.lighter_purplegrey}
-                  multiline='true'
-                />
+              <TextInput
+                onChangeText={onChangeText}
+                value={text}
+                placeholder="Type a comment"
+                placeholderTextColor={Colors.lighter_purplegrey}
+                multiline={true}
+                style={styles.input}
+              />
             </View>
+            <View style={styles.button_container}>
+              <Button
+                title="Post"
+                onPress={console.log('Pressed')}
+                disabled={text.length==0}
+              />
+            </View>
+          </View>
         </View>
       </SafeAreaView>
     );
@@ -45,7 +53,6 @@ const styles = StyleSheet.create({
   bottom_action: {
     backgroundColor: Colors.background,
     width:'100%',
-    height: 60,
     flexDirection: 'row',
     justifyContent: 'space-around',
     paddingTop: 15,
@@ -57,21 +64,23 @@ const styles = StyleSheet.create({
   },
   comment_bar: {
     justifyContent: 'center', 
-    alignItems: 'center',
+    alignItems: 'baseline',
     flexDirection: "row",
+    paddingLeft: 15,
+    flex: 4,
   },
   input: {
-    width: '80%',
-    height: 40,
-    marginVertical: 25,
-    marginRight: 10,
+    width: '85%',
     marginLeft: 10,
     padding: 10,
     paddingTop: 10,
-    borderRadius: 99999,
+    borderRadius: 30,
     borderWidth: 1,
     borderColor: Colors.lavender,
     backgroundColor: 'white',
     fontSize: 16,
+  },
+  button_container: {
+    marginRight: 10,
   },
 });

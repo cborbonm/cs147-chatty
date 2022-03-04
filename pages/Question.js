@@ -71,7 +71,7 @@ export function Question({ route, navigation}) {
                         </Text>
                     </View>
                     
-                    <Text style={{fontSize: 16, paddingVertical: 10}}>{com.comment}</Text>
+                    <Text style={{fontSize: 16, paddingTop: 10, paddingBottom: 5}}>{com.comment}</Text>
                 </View>
             </View>
         )
