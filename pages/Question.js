@@ -12,54 +12,22 @@ import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 
 const windowWidth = Dimensions.get('window').width;
 
-export function Question({ question, navigation}) {
+export function Question({ route, navigation}) {
+    const params = route.params;
+    const question = params.question;
     return (
-        <></>
+        <View style={styles.container}>
+            <Text>{question.question}</Text>
+        </View>
     );
   }
   
 export default Question;
 
 const styles = StyleSheet.create({
-    post: {
-        flexDirection: 'row',
-        justifyContent: 'flex-start',
-        paddingVertical: 10,
-        paddingHorizontal: 30,
-        borderColor: Colors.lavender,
-        borderTopWidth: 1,
-        width: windowWidth,
+    container: {
+        backgroundColor: Colors.background,
+        display: "flex",
+        flex: 1,
     },
-    left: {
-        flex: 15,
-    },
-    right: {
-        flex: 85,
-        paddingLeft: 0,
-    },
-    name: {
-        fontSize: 16,
-        fontWeight: 'bold',
-    },
-    timestamp: {
-        fontSize: 16,
-        color: Colors.purplegrey,
-    },
-    name_timestamp_container: {
-        marginBottom: 10,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-    },
-    question: {
-        fontSize: 16,
-    },
-    comments_container: {
-        marginTop: 10,
-        flexDirection: "row",
-        alignItems: "center",
-    },
-    num_comments: {
-        paddingLeft: 5,
-        fontSize: 16,
-    }
 });

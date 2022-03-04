@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         paddingHorizontal: 30,
         borderColor: Colors.lavender,
-        borderTopWidth: 1,
+        borderBottomWidth: 1,
         width: windowWidth,
     },
     left: {
