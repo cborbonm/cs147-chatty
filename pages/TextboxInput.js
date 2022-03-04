@@ -9,7 +9,7 @@ import {
     View, 
     FlatList } 
   from "react-native";
-
+import colors from "../Themes/colors";
 import Colors from "../Themes/colors";
 
 const TextboxInput = () => {
