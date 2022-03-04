@@ -31,7 +31,11 @@ export default function App() {
     {/* change header: https://stackoverflow.com/questions/45329620/change-navigation-header-background-color */}
       <Stack.Navigator initialRouteName="Forum">
         <Stack.Group screenOptions={{ 
-          headerBackTitle: null, 
+          headerBackTitle: null, headerStyle: {
+            backgroundColor: Colors.background,
+            }, headerTintColor: Colors.chatty, headerTitleStyle: {
+            fontWeight: '400',
+            },
         }}>
           {/* pass props: https://stackoverflow.com/questions/60439210/how-to-pass-props-to-screen-component-with-a-tab-navigator */}
           <Stack.Screen name="Home" component={Home} options={{headerShown: false}} />
