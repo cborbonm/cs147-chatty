@@ -35,40 +35,48 @@ function translateLevel(level) {
     }
 }
 
-function pushComment(comments, com, i) {
-    comments.push (
-        <View key={i} style={styles.post}>
-            <View style={styles.left}>
-                <FontAwesome name="user-circle" size={40} color={Colors.chatty} />
+const CommentInput = () => {
+    const [text, setText] = React.useState("");
+  
+    return (
+      <KeyboardAvoidingView 
+        behavior={Platform.OS == "ios" ? "position" : "height"}
+        style={{ flex: 1, justifyContent: 'flex-end', }}
+        keyboardVerticalOffset = {95}
+      >
+      <SafeAreaView>
+      
+        <View style={styles.bottom_action}>
+          <View alignItems='baseline' flexDirection='row' flex={1}>
+            <View style={styles.comment_bar}>
+              <FontAwesome name="user-circle" size={36} color={Colors.chatty} />
+              <TextInput
+                onChangeText={setText}
+                value={text}
+                placeholder="Type a comment"
+                placeholderTextColor={Colors.lighter_purplegrey}
+                multiline={true}
+                style={styles.input}
+              />
             </View>
-            <View style={styles.right}>
-                <View style={styles.name_timestamp_container}>
-                    <View flexDirection="row" alignItems="baseline">
-                        <Text style={styles.name}>
-                            {com.user.name}
-                        </Text>
-                    </View>
-                    <Text style={{color: Colors.purplegrey}}>{com.timestamp}</Text>
-                </View>
-                
-                <View> 
-                    <Text style={{color: Colors.lighter_purplegrey}}>
-                        Native language: {getLanguageName(com.user.native.language)}
-                        {com.user.native.location.length > 0 ? " ("+com.user.native.location+")" : ''}
-                    </Text>
-                </View>
-                
-                <Text style={{fontSize: 16, paddingTop: 10, paddingBottom: 5}}>{com.comment}</Text>
+            <View style={styles.button_container}>
+              <Button
+                title="Post"
+                onPress={() => setText('')}
+                disabled={text.length==0}
+              />
             </View>
+          </View>
         </View>
-    )
+      
+      </SafeAreaView>
+      </KeyboardAvoidingView>
+    );
 }
 
 export function Question({ route, navigation}) {
     const params = route.params;
     const question = params.question;
-    const [text, setText] = React.useState("");
-    const [viewComments, setComments] = React.useState([]);
 
     var tags = [];
 
@@ -80,17 +88,41 @@ export function Question({ route, navigation}) {
 			</View>
 		);
 	}
-    
-    var comments = viewComments;
-    
-    if (comments.length < question.comments.length ) {
-        for (let i = 0; i < question.comments.length; i++) {
-            
-            var com = question.comments[i];
 
-            pushComment(comments, com, i);
-        }
+    var comments = [];
+
+    for (let i = 0; i < question.comments.length; i++) {
+        
+        var com = question.comments[i];
+
+        comments.push (
+            <View key={i} style={styles.post}>
+                <View style={styles.left}>
+                    <FontAwesome name="user-circle" size={40} color={Colors.chatty} />
+                </View>
+                <View style={styles.right}>
+                    <View style={styles.name_timestamp_container}>
+                        <View flexDirection="row" alignItems="baseline">
+                            <Text style={styles.name}>
+                                {com.user.name}
+                            </Text>
+                        </View>
+                        <Text style={{color: Colors.purplegrey}}>{com.timestamp}</Text>
+                    </View>
+                    
+                    <View> 
+                        <Text style={{color: Colors.lighter_purplegrey}}>
+                            Native language: {getLanguageName(com.user.native.language)}
+                            {com.user.native.location.length > 0 ? " ("+com.user.native.location+")" : ''}
+                        </Text>
+                    </View>
+                    
+                    <Text style={{fontSize: 16, paddingTop: 10, paddingBottom: 5}}>{com.comment}</Text>
+                </View>
+            </View>
+        )
     }
+
 
     return (
         <View style={styles.container}>
@@ -141,75 +173,21 @@ export function Question({ route, navigation}) {
                     </View>
                 </View>
                 
-                {comments.length == 0 ? (
+                {question.comments.length == 0 ? (
                         <View padding={30}>
                         <Text style={styles.no_comments_text}>
                             No comments yet. Be the first to comment!
                         </Text>
-                        { React.useEffect(() => { setComments([...comments]); }, []) }
                         </View>
                     ):(
                         <View style={styles.comment}>
-                            { React.useEffect(() => { setComments([...comments]); }, []) }
-                            { viewComments }
+                            { comments }
                         </View>
                     )
                 }
             </ScrollView>
 
-            <KeyboardAvoidingView 
-                behavior={Platform.OS == "ios" ? "position" : "height"}
-                style={{ flex: 1, justifyContent: 'flex-end', }}
-                keyboardVerticalOffset = {95}
-            >
-            <SafeAreaView>
-            
-                <View style={styles.bottom_action}>
-                <View alignItems='baseline' flexDirection='row' flex={1}>
-                    <View style={styles.comment_bar}>
-                    <FontAwesome name="user-circle" size={36} color={Colors.chatty} />
-                    <TextInput
-                        onChangeText={setText}
-                        value={text}
-                        placeholder="Type a comment"
-                        placeholderTextColor={Colors.lighter_purplegrey}
-                        multiline={true}
-                        style={styles.input}
-                    />
-                    </View>
-                    <View style={styles.button_container}>
-                    <Button
-                        title="Post"
-                        onPress={() => 
-                            {
-                                pushComment(
-                                    comments, 
-                                    {
-                                        user: { 
-                                            name:'me',
-                                            native: {
-                                                language:'en',
-                                                location: 'US',
-                                            },
-                                        },
-                                        timestamp: 'Just now',
-                                        comment: text,
-                                    }, 
-                                    comments.length
-                                );
-                                console.log(comments.length);
-                                setText('');
-                                setComments([...comments]);
-                            }
-                        }
-                        disabled={text.length==0}
-                    />
-                    </View>
-                </View>
-                </View>
-            
-            </SafeAreaView>
-            </KeyboardAvoidingView>
+            <CommentInput />
         </View>
     );
   }
