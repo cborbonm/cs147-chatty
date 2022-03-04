@@ -37,28 +37,23 @@ function translateLevel(level) {
 
 function pushComment(comments, com, i) {
     comments.push (
-        <View key={i} style={styles.post}>
+        <View key={i} style={[styles.post, {borderBottomWidth: 0}]}>
             <View style={styles.left}>
-                <FontAwesome name="user-circle" size={40} color={Colors.chatty} />
+                <FontAwesome name="user-circle" size={24} color={Colors.chatty} />
             </View>
             <View style={styles.right}>
                 <View style={styles.name_timestamp_container}>
                     <View flexDirection="row" alignItems="baseline">
-                        <Text style={styles.name}>
-                            {com.user.name}
+                        <Text style={styles.name}>{com.user.name} · </Text>
+                        <Text style={{color: Colors.lighter_purplegrey}}>
+                            {getLanguageName(com.user.native.language)}
+                            {com.user.native.location.length > 0 ? " ("+com.user.native.location+")" : ''}
                         </Text>
                     </View>
                     <Text style={{color: Colors.purplegrey}}>{com.timestamp}</Text>
                 </View>
                 
-                <View> 
-                    <Text style={{color: Colors.lighter_purplegrey}}>
-                        Native language: {getLanguageName(com.user.native.language)}
-                        {com.user.native.location.length > 0 ? " ("+com.user.native.location+")" : ''}
-                    </Text>
-                </View>
-                
-                <Text style={{fontSize: 16, paddingTop: 10, paddingBottom: 5}}>{com.comment}</Text>
+                <Text style={{fontSize: 16, paddingBottom: 10}}>{com.comment}</Text>
             </View>
         </View>
     )
@@ -98,7 +93,7 @@ export function Question({ route, navigation}) {
             <ScrollView style={{ height: '80%',}}> 
                 <View style={styles.post}>
                     <View style={styles.left}>
-                        <FontAwesome name="user-circle" size={40} color={Colors.chatty} />
+                        <FontAwesome name="user-circle" size={24} color={Colors.chatty} />
                     </View>
                     <View style={styles.right}>
                         <View style={styles.name_timestamp_container}>
@@ -140,9 +135,11 @@ export function Question({ route, navigation}) {
                         </View>
                     </View>
                 </View>
+
+                <View padding={5} />
                 
                 {comments.length == 0 ? (
-                        <View padding={30}>
+                        <View padding={15} paddingLeft={30}>
                         <Text style={styles.no_comments_text}>
                             No comments yet. Be the first to comment!
                         </Text>
@@ -232,10 +229,10 @@ const styles = StyleSheet.create({
         width: windowWidth,
     },
     left: {
-        flex: 15,
+        flex: 1,
     },
     right: {
-        flex: 85,
+        flex: 9,
         paddingLeft: 0,
     },
     name: {
