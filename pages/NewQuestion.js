@@ -11,7 +11,7 @@ import {
 import Colors from "../Themes/colors";
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 import TextboxInput from './TextboxInput';
-import tag from "../assets/Icons/tag.png";
+
 import LanguageDropDown from './LanguageDropDown';
 
 const windowWidth = Dimensions.get('window').width;
@@ -39,7 +39,7 @@ export default function NewQuestion({ route, navigation}) {
                 <TextboxInput></TextboxInput>
             </View>
             <View style={styles.addTagsDiv}>
-                <Image source={tag}></Image>
+                <MaterialCommunityIcons name="tag" size={20} color={Colors.chatty}/>
                 <Text style={styles.addTags}>Add tags</Text>
             </View>
             <View style={styles.tagDiv}>
