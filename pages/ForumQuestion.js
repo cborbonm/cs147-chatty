@@ -8,14 +8,18 @@ import {
 } from 'react-native';
 
 import Colors from "../Themes/colors";
+
+import getLanguageName from "../utils/getLanguageName";
+import getLanguageNativeName from "../utils/getLanguageNativeName";
+
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 
 const windowWidth = Dimensions.get('window').width;
 
-export function ForumQuestion({ username, language, timestamp, question, comments, navigation}) {
+export function ForumQuestion({ question, navigation}) {
     return (
         <Pressable // press whole row
-            onPress={ () => console.log("pressed question", timestamp) /*navigation.navigate("SongDetail", { question: question })(/) */ } 
+            onPress={ () => navigation.navigate("Question", { question: question }) } 
             style={({ pressed }) => [
             {
               backgroundColor: pressed ? Colors.pressed_background : Colors.background,
@@ -28,14 +32,27 @@ export function ForumQuestion({ username, language, timestamp, question, comment
             </View>
             <View style={styles.right}>
                 <View style={styles.name_timestamp_container}>
-                    <Text style={styles.name}>{username}</Text>
-                    <Text style={styles.timestamp}>{timestamp}</Text>
+                    <View flexDirection="row" alignItems="baseline">
+                        <Text style={styles.name}>{question.user.name} · </Text>
+                        <Text style={{color: Colors.lighter_purplegrey}}>
+                            {getLanguageName(question.user.native.language)}
+                            {question.user.native.location.length > 0 ? " ("+question.user.native.location+")" : ''}
+                        </Text>
+                    </View>
+                    <Text style={{color: Colors.purplegrey}}>{question.timestamp}</Text>
                 </View>
                 
-                <Text style={styles.question}>{question}</Text>
+                <View marginBottom={10}> 
+                    <Text style={{color: Colors.lighter_purplegrey}}>
+                        Question about: {getLanguageName(question.user.learning.language)}
+                        {question.user.learning.location.length > 0 ? " ("+question.user.learning.location+")" : ''}
+                    </Text>
+                </View>
+
+                <Text style={{fontSize: 16}} numberOfLines={3}>{question.question}</Text>
                 <View style={styles.comments_container}>
                     <MaterialCommunityIcons name="comment" size={16} color={Colors.lavender} />
-                    <Text style={styles.num_comments}>{comments}</Text>
+                    <Text style={styles.num_comments}>{question.comments.length}</Text>
                 </View>
             </View>
         </Pressable>
@@ -65,17 +82,11 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: 'bold',
     },
-    timestamp: {
-        fontSize: 16,
-        color: Colors.purplegrey,
-    },
     name_timestamp_container: {
         marginBottom: 10,
         flexDirection: 'row',
         justifyContent: 'space-between',
-    },
-    question: {
-        fontSize: 16,
+        alignItems: 'baseline',
     },
     comments_container: {
         marginTop: 10,

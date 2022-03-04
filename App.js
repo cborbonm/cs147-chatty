@@ -1,8 +1,5 @@
 import { StyleSheet, Text, SafeAreaView, Pressable, Image, View, FlatList } from "react-native";
 import { useState, useEffect } from "react";
-import { ResponseType, useAuthRequest } from "expo-auth-session";
-import { myTopTracks, albumTracks } from "./utils/apiOptions";
-import { REDIRECT_URI, SCOPES, CLIENT_ID, ALBUM_ID } from "./utils/constants";
 import Colors from "./Themes/colors";
 import Forum from "./pages/Forum";
 import NewQuestionPromptList from "./pages/NewQuestionPromptList";
@@ -21,7 +18,7 @@ function Home({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
         <Header page="Home" navigation={navigation}/>
-        <Forum />
+        <Forum navigation={navigation}/>
         <Nav />
     </SafeAreaView>
   );

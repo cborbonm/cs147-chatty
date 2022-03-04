@@ -22,11 +22,8 @@ export function Forum({ navigation }) {
                 data={questions}
                 renderItem={({item}) => 
                     <ForumQuestion 
-                        username={item.username}
-                        timestamp={item.timestamp}
-                        question={item.question}
-                        comments={item.comments}
-                        //navigation={navigation}
+                        question={item}
+                        navigation={navigation}
                     />
                 }
                 keyExtractor={(item) => item.key}
