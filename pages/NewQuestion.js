@@ -16,7 +16,7 @@ const windowWidth = Dimensions.get('window').width;
 
 export default function NewQuestion({ route, navigation}) {
     const params = route.params;
-    let prompt = params.prompt.substring(0, params.prompt.length - 1);
+    let prompt = params.prompt;
     return (
         <View style={styles.container}>
             <View style={styles.languageChoice}>
@@ -25,7 +25,6 @@ export default function NewQuestion({ route, navigation}) {
             <View style={styles.textbox}>
                 <Text style={styles.prompt}>{prompt}</Text>
                 <TextboxInput></TextboxInput>
-                <Text style={styles.prompt}>?</Text>
             </View>
             <View>
                 <Text>Add tags</Text>
