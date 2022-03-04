@@ -28,7 +28,7 @@ export function ForumQuestion({ question, navigation}) {
             ]}
         >
             <View style={styles.left}>
-                <FontAwesome name="user-circle" size={40} color={Colors.chatty} />
+                <FontAwesome name="user-circle" size={24} color={Colors.chatty} />
             </View>
             <View style={styles.right}>
                 <View style={styles.name_timestamp_container}>
@@ -66,16 +66,16 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'flex-start',
         paddingVertical: 10,
-        paddingHorizontal: 30,
+        paddingHorizontal: 20,
         borderColor: Colors.lavender,
         borderBottomWidth: 1,
         width: windowWidth,
     },
     left: {
-        flex: 15,
+        flex: 1,
     },
     right: {
-        flex: 85,
+        flex: 9,
         paddingLeft: 0,
     },
     name: {

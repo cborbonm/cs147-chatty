@@ -223,7 +223,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'flex-start',
         paddingVertical: 10,
-        paddingHorizontal: 30,
+        paddingHorizontal: 20,
         borderColor: Colors.lavender,
         borderBottomWidth: 1,
         width: windowWidth,
