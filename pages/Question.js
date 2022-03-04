@@ -10,10 +10,11 @@ import {
 import Colors from "../Themes/colors";
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 
+import { db } from "../firebase";
+import { doc, getDoc } from "firebase/firestore";
+
 import CommentInput from './CommentInput';
 import getLanguageName from '../utils/getLanguageName';
-
-import { questions } from '../data/questions';
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -82,7 +83,7 @@ export function Question({ route, navigation}) {
     return (
         <View style={styles.container}>
             {/* question and comments */}
-            <ScrollView> 
+            <ScrollView style={{ height: '80%',}}> 
                 <View style={styles.post}>
                     <View style={styles.left}>
                         <FontAwesome name="user-circle" size={40} color={Colors.chatty} />
@@ -142,7 +143,6 @@ export function Question({ route, navigation}) {
                 }
             </ScrollView>
 
-            {/* comment input */}
             <CommentInput />
         </View>
     );

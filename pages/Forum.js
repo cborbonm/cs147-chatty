@@ -10,6 +10,8 @@ import Colors from "../Themes/colors";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import { questions } from '../data/questions';
+import { db } from "../firebase";
+import { doc, getDoc } from "firebase/firestore";
 
 export function Forum({ navigation }) {
     return (
