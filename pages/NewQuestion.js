@@ -9,31 +9,40 @@ import {
 from "react-native";
 import Colors from "../Themes/colors";
 
+import NewQuestionPrompt from "./NewQuestionPrompt";
+
 export default function NewQuestion( {navigation} ) {
   return (
     <View style={styles.container}>
         <View style={styles.subContainer}> 
           <Text style={styles.questionTopic}>Language</Text>
           <View style={styles.questionsDiv}>
-            <Text style={styles.question}>How do you say this?</Text>
-            <Text style={styles.question}>What does this mean?</Text>
-            <Text style={styles.question}>Does this sound natural?</Text>
-            <Text style={styles.question}>What's the difference between...?</Text>
-            <Text style={styles.question}>Can you use ... in a sentence?</Text>
+            <NewQuestionPrompt prompt="How do you say this?" />
+            <View style={styles.divider}/>
+            <NewQuestionPrompt prompt="What does this mean?" />
+            <View style={styles.divider}/>
+            <NewQuestionPrompt prompt="Does this sound natural?" />
+            <View style={styles.divider}/>
+            <NewQuestionPrompt prompt="What's the difference between...?" />
+            <View style={styles.divider}/>
+            <NewQuestionPrompt prompt="Can you use ... in a sentence?" />
           </View>
           <Text style={styles.questionTopic}>Speaking</Text>
           <View style={styles.questionsDiv}>
-            <Text style={styles.question}>How's my pronounciation?</Text>
-            <Text style={styles.question}>How do you pronounce...?</Text>
+            <NewQuestionPrompt prompt="How's my pronounciation?" />
+            <View style={styles.divider}/>
+            <NewQuestionPrompt prompt="How do you pronounce...?" />
           </View>
           <Text style={styles.questionTopic}>Culture</Text>
           <View style={styles.questionsDiv}>
-            <Text style={styles.question}>What should I say when...?</Text>
-            <Text style={styles.question}>What should I do when...?</Text>
-            <Text style={styles.question}>Is it acceptable to do this?</Text>
+            <NewQuestionPrompt prompt="What should I say when...?" />
+            <View style={styles.divider}/>
+            <NewQuestionPrompt prompt="What should I do when...?" />
+            <View style={styles.divider}/>
+            <NewQuestionPrompt prompt="Is it acceptable to do this?" />
           </View>
         </View>
-        
+
         <Pressable 
           onPress={ () => console.log("writing my own question") }
           style={({ pressed }) => [
@@ -68,11 +77,8 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderBottomWidth: 1,
     display: "flex",
-  }, 
-  question: {
-    padding: 15,
-    fontSize: 16,
-    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
   freeform: {
     display: "flex",
@@ -86,5 +92,10 @@ const styles = StyleSheet.create({
     padding: 10,
     fontSize: 15,
     fontWeight: '500',
-  }
+  },
+  divider: {
+    width: "95%",
+    height: 1,
+    backgroundColor: Colors.lavender,
+  },
 });
