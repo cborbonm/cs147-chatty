@@ -36,7 +36,7 @@ export const questions = [
         },
         timestamp: '1m',
         question: 'How should I order a café at a restaurant?',
-        tags: [],
+        tags: ['#casual','#strangers'],
         comments: [],
     },
     {
