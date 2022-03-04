@@ -12,54 +12,35 @@ import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 
 const windowWidth = Dimensions.get('window').width;
 
-export function NewQuestion({ prompt, navigation}) {
+export function NewQuestion({ route, navigation}) {
+    const params = route.params;
     return (
-        <Text>{prompt}</Text>
+        <View style={styles.container}>
+            <View styles={styles.languagechoice}>
+                <Text styles={styles.text}> This question is about: </Text>
+            </View>
+            <View styles={styles.textbox}>
+                <Text>{params.prompt}</Text>
+            </View>
+            <View>
+                <Text>Add tags</Text>
+            </View>
+        </View>
     );
 }
 
 export default NewQuestion;
 
 const styles = StyleSheet.create({
-    post: {
-        flexDirection: 'row',
-        justifyContent: 'flex-start',
-        paddingVertical: 10,
-        paddingHorizontal: 30,
-        borderColor: Colors.lavender,
-        borderTopWidth: 1,
-        width: windowWidth,
+    container: {
+        backgroundColor: Colors.background,
+        display: "flex",
+        flex: 1,
     },
-    left: {
-        flex: 15,
-    },
-    right: {
-        flex: 85,
-        paddingLeft: 0,
-    },
-    name: {
-        fontSize: 16,
-        fontWeight: 'bold',
-    },
-    timestamp: {
-        fontSize: 16,
-        color: Colors.purplegrey,
-    },
-    name_timestamp_container: {
-        marginBottom: 10,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-    },
-    question: {
-        fontSize: 16,
-    },
-    comments_container: {
-        marginTop: 10,
-        flexDirection: "row",
-        alignItems: "center",
-    },
-    num_comments: {
-        paddingLeft: 5,
-        fontSize: 16,
+    textbox: {
+        display: "flex",
+        flex: 1,
+        margin: 10,
+        padding: 10,
     }
 });
