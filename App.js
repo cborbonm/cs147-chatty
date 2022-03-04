@@ -32,9 +32,13 @@ export default function App() {
       <Stack.Navigator initialRouteName="Forum">
         <Stack.Group screenOptions={{ 
           headerBackTitle: null, headerStyle: {
-            backgroundColor: Colors.background,
-            }, headerTintColor: Colors.chatty, headerTitleStyle: {
-            fontWeight: '400',
+              backgroundColor: Colors.background,
+              borderBottomColor: Colors.lavender,
+              borderBottomWidth: 1,
+            }, 
+            headerTintColor: Colors.chatty, 
+            headerTitleStyle: {
+              fontWeight: '400', 
             },
         }}>
           {/* pass props: https://stackoverflow.com/questions/60439210/how-to-pass-props-to-screen-component-with-a-tab-navigator */}
