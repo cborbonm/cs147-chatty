@@ -10,6 +10,7 @@ import {
     SafeAreaView, 
     Button,
     View, 
+    KeyboardAvoidingView,
 } 
 from "react-native";
 
@@ -20,7 +21,13 @@ const CommentInput = () => {
     const [text, onChangeText] = React.useState("");
   
     return (
+      <KeyboardAvoidingView 
+        behavior={Platform.OS == "ios" ? "padding" : "height"}
+        style={{ flex: 1, justifyContent: 'flex-end', }}
+        keyboardVerticalOffset = {95}
+      >
       <SafeAreaView>
+      
         <View style={styles.bottom_action}>
           <View alignItems='baseline' flexDirection='row' flex={1}>
             <View style={styles.comment_bar}>
@@ -43,7 +50,9 @@ const CommentInput = () => {
             </View>
           </View>
         </View>
+      
       </SafeAreaView>
+      </KeyboardAvoidingView>
     );
 }
 
@@ -55,8 +64,7 @@ const styles = StyleSheet.create({
     width:'100%',
     flexDirection: 'row',
     justifyContent: 'space-around',
-    paddingTop: 15,
-    paddingBottom: 5,
+    paddingTop: 10,
     shadowColor: Colors.purplegrey,
     shadowOpacity: 0.3,
     shadowRadius: 3,

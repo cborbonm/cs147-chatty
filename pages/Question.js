@@ -5,13 +5,14 @@ import {
     Image,
     Dimensions,
     ScrollView,
-    Pressable,
 } from 'react-native';
 
 import Colors from "../Themes/colors";
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 
 import CommentInput from './CommentInput';
+import getLanguageName from '../utils/getLanguageName';
+
 import { questions } from '../data/questions';
 
 const windowWidth = Dimensions.get('window').width;
