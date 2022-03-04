@@ -19,20 +19,21 @@ const windowWidth = Dimensions.get('window').width;
 export default function NewQuestion({ route, navigation}) {
     const params = route.params;
     let prompt = params.prompt;
-    let language = "Select Language ↓";
+    let language = params.language;
     return (
         <View style={styles.container}>
             <View style={styles.languageChoice}>
                 <Text style={styles.text}> This question is about: </Text>
                 <Pressable 
-                onPress={ () => navigation.navigate("LanguageDropDown") } 
+                onPress={ () => navigation.navigate("LanguageDropDown", {
+                    prompt: prompt } ) } 
                 style={({ pressed }) => [
                     {
                         backgroundColor: pressed ? Colors.pressed_background : "white",
                     },
                     styles.languageDropDown
-                ]}
-                ><Text>{language}</Text></Pressable>
+                ]}>
+                <Text>{language? language : "Select Language"}</Text></Pressable>
             </View>
             <View style={styles.textbox}>
                 <Text style={styles.prompt}>{prompt}</Text>
@@ -94,6 +95,7 @@ const styles = StyleSheet.create({
         borderColor: Colors.lavender,
         shadowOpacity: 0.2,
         shadowOffset: {width: 1,height: 1},
+        marginLeft: 7,
     },
     text: {
        fontSize: 17,
