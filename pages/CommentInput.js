@@ -22,7 +22,7 @@ const CommentInput = () => {
   
     return (
       <KeyboardAvoidingView 
-        behavior={Platform.OS == "ios" ? "padding" : "height"}
+        behavior={Platform.OS == "ios" ? "position" : "height"}
         style={{ flex: 1, justifyContent: 'flex-end', }}
         keyboardVerticalOffset = {95}
       >
@@ -44,7 +44,7 @@ const CommentInput = () => {
             <View style={styles.button_container}>
               <Button
                 title="Post"
-                onPress={console.log('Pressed')}
+                onPress={() => console.log('Pressed')}
                 disabled={text.length==0}
               />
             </View>
