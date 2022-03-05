@@ -72,6 +72,7 @@ export function Question({ route, navigation}) {
     const question = params.question;
     const [text, setText] = React.useState("");
     const [viewComments, setComments] = React.useState([]);
+    const scrollRef = React.useRef();
 
     var tags = [];
 
@@ -98,7 +99,11 @@ export function Question({ route, navigation}) {
     return (
         <View style={styles.container}>
             {/* question and comments */}
-            <ScrollView style={{ height: '80%',}}> 
+            <ScrollView 
+                style={{ height: '80%',}} 
+                ref={scrollRef} 
+                onContentSizeChange={() => scrollRef.current.scrollToEnd()}
+            > 
                 <View style={styles.post}>
                     <View style={styles.left}>
                         <FontAwesome name="user-circle" size={24} color={Colors.chatty} />

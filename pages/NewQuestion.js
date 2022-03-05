@@ -12,11 +12,9 @@ import Colors from "../Themes/colors";
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 import TextboxInput from './TextboxInput';
 
-import LanguageDropDown from './LanguageDropDown';
-
 const windowWidth = Dimensions.get('window').width;
 
-export default function NewQuestion({ route, navigation}) {
+export default function NewQuestion({ route, navigation }) {
     const params = route.params;
     let prompt = params.prompt;
     let language = params.language;
@@ -25,15 +23,16 @@ export default function NewQuestion({ route, navigation}) {
             <View style={styles.languageChoice}>
                 <Text style={styles.text}> This question is about: </Text>
                 <Pressable 
-                onPress={ () => navigation.navigate("LanguageDropDown", {
-                    prompt: prompt } ) } 
-                style={({ pressed }) => [
-                    {
-                        backgroundColor: pressed ? Colors.pressed_background : "white",
-                    },
-                    styles.languageDropDown
-                ]}>
-                <Text>{language? language : "Select Language"}</Text></Pressable>
+                    onPress={ () => navigation.navigate("LanguageDropDown", {
+                        prompt: prompt } ) } 
+                    style={({ pressed }) => [
+                        {
+                            backgroundColor: pressed ? Colors.pressed_background : "white",
+                        },
+                        styles.languageDropDown
+                    ]}>
+                    <Text>{language? language : "Select Language"}</Text>
+                </Pressable>
             </View>
             <View style={styles.textbox}>
                 <Text style={styles.prompt}>{prompt}</Text>
@@ -41,7 +40,7 @@ export default function NewQuestion({ route, navigation}) {
             </View>
             <View style={styles.addTagsDiv}>
                 <MaterialCommunityIcons name="tag" size={20} color={Colors.chatty}/>
-                <Text style={styles.addTags}>Add tags</Text>
+                <Text style={styles.addTags}>Add tags (optional)</Text>
             </View>
             <View style={styles.tagDiv}>
                 <Pressable style={styles.tag}>
