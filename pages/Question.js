@@ -18,7 +18,6 @@ import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 import { db } from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
 
-//import CommentInput from './CommentInput';
 import getLanguageName from '../utils/getLanguageName';
 
 const windowWidth = Dimensions.get('window').width;

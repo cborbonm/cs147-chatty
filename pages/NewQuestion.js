@@ -1,3 +1,4 @@
+import React from "react";
 import {
     StyleSheet,
     Text,
@@ -9,8 +10,9 @@ import {
 } from 'react-native';
 
 import Colors from "../Themes/colors";
-import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
-import TextboxInput from './TextboxInput';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+
+import getLanguageName from "../utils/getLanguageName";
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -18,6 +20,12 @@ export default function NewQuestion({ route, navigation }) {
     const params = route.params;
     let prompt = params.prompt;
     let language = params.language;
+
+    const [text, setText] = React.useState("");
+    const [tags, setTags] = React.useState([]);
+
+    var disabled = !language || !text;
+
     return (
         <View style={styles.container}>
             <View style={styles.languageChoice}>
@@ -31,13 +39,24 @@ export default function NewQuestion({ route, navigation }) {
                         },
                         styles.languageDropDown
                     ]}>
-                    <Text>{language? language : "Select Language"}</Text>
+                    <Text>{language? getLanguageName(language) : "Select Language"}</Text>
                 </Pressable>
             </View>
+            
+            {/* textbox input */}
             <View style={styles.textbox}>
                 <Text style={styles.prompt}>{prompt}</Text>
-                <TextboxInput></TextboxInput>
+                <TextInput
+                    style={styles.input}
+                    onChangeText={setText}
+                    value={text}
+                    placeholder="Type your question here"
+                    placeholderTextColor={Colors.lighter_purplegrey}
+                    multiline={true}
+                />
             </View>
+
+            {/* tag list */}
             <View style={styles.addTagsDiv}>
                 <MaterialCommunityIcons name="tag" size={20} color={Colors.chatty}/>
                 <Text style={styles.addTags}>Add tags (optional)</Text>
@@ -71,6 +90,38 @@ export default function NewQuestion({ route, navigation }) {
                     <Text style={styles.tagText}>#school</Text>
                 </Pressable>
             </View>
+
+            {/* submit button */}
+            <Pressable 
+                onPress={ () => navigation.navigate("Question", { 
+                    question: {
+                        user: { 
+                            name:'me',
+                            native: {
+                                language:'en',
+                                location: 'US',
+                            },
+                            learning: {
+                                language: language,
+                                location: '',
+                                level: 1,
+                            },
+                        },
+                        timestamp: 'Just now',
+                        question: text,
+                        tags: ['#formal', '#business'],
+                        comments: [
+                        ],
+                    } 
+                }) } 
+                disabled={disabled} // can only submit after filling out both language and text fields
+                style={({ pressed }) => [
+                    { opacity: pressed ? 0.5 : (disabled ? 0.5 : 1.0) }, styles.submitButton
+                ]}
+            >
+            <Text style={styles.submitButtonText}>Submit question</Text>
+            </Pressable>
+            
         </View>
     );
 }
@@ -102,6 +153,17 @@ const styles = StyleSheet.create({
     prompt: {
         fontSize: 17,
         marginLeft: 25,
+    },
+    input: {
+        height: 150,
+        margin: 25,
+        padding: 10,
+        paddingTop: 10,
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: Colors.lavender,
+        backgroundColor: 'white',
+        fontSize: 16,
     },
     addTagsDiv: {
         display: "flex",
@@ -137,5 +199,18 @@ const styles = StyleSheet.create({
     tagText: {
         fontSize: 15,
         color: Colors.purplegrey
-    }
+    },
+    submitButton: {
+        display: "flex",
+        alignSelf: 'center',
+        backgroundColor: Colors.lighter_purple,
+        margin: 20,
+        borderRadius: 50,
+    },
+    submitButtonText: {
+        color: 'white',
+        padding: 10,
+        fontSize: 16,
+        fontWeight: '500',
+    },
 });

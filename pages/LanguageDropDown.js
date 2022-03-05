@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 
 import Colors from "../Themes/colors";
+import getLanguageName from "../utils/getLanguageName";
 
 function LanguageOption( {navigation, language, prompt} ) {
     return (
@@ -17,7 +18,7 @@ function LanguageOption( {navigation, language, prompt} ) {
             },
             styles.language_container
         ]}>
-            <Text style={styles.language}>{language}</Text>
+            <Text style={styles.language}>{getLanguageName(language)}</Text>
         </Pressable>
     );
 }
@@ -29,33 +30,31 @@ export default function LanguageDropDown({ route, navigation }) {
     return (
         <View style={styles.container}>
         <View style={styles.languagesDiv}>
-            <LanguageOption navigation={navigation} language={"Arabic"} prompt={prompt}/>
+            <LanguageOption navigation={navigation} language={"ar"} prompt={prompt}/>
             <View style={styles.divider}/>
-            <LanguageOption navigation={navigation} language={"Chinese (Simplified)"} prompt={prompt}/>
+            <LanguageOption navigation={navigation} language={"zh"} prompt={prompt}/>
             <View style={styles.divider}/>
-            <LanguageOption navigation={navigation} language={"Chinese (Traditional)"} prompt={prompt}/>
+            <LanguageOption navigation={navigation} language={"nl"} prompt={prompt}/>
             <View style={styles.divider}/>
-            <LanguageOption navigation={navigation} language={"Dutch"} prompt={prompt}/>
+            <LanguageOption navigation={navigation} language={"en"} prompt={prompt}/>
             <View style={styles.divider}/>
-            <LanguageOption navigation={navigation} language={"English"} prompt={prompt}/>
+            <LanguageOption navigation={navigation} language={"fr"} prompt={prompt}/>
             <View style={styles.divider}/>
-            <LanguageOption navigation={navigation} language={"French"} prompt={prompt}/>
+            <LanguageOption navigation={navigation} language={"de"} prompt={prompt}/>
             <View style={styles.divider}/>
-            <LanguageOption navigation={navigation} language={"German"} prompt={prompt}/>
+            <LanguageOption navigation={navigation} language={"it"} prompt={prompt}/>
             <View style={styles.divider}/>
-            <LanguageOption navigation={navigation} language={"Italian"} prompt={prompt}/>
+            <LanguageOption navigation={navigation} language={"ja"} prompt={prompt}/>
             <View style={styles.divider}/>
-            <LanguageOption navigation={navigation} language={"Japanese"} prompt={prompt}/>
+            <LanguageOption navigation={navigation} language={"nb"} prompt={prompt}/>
             <View style={styles.divider}/>
-            <LanguageOption navigation={navigation} language={"Norwegian"} prompt={prompt}/>
+            <LanguageOption navigation={navigation} language={"pt"} prompt={prompt}/>
             <View style={styles.divider}/>
-            <LanguageOption navigation={navigation} language={"Portuguese"} prompt={prompt}/>
+            <LanguageOption navigation={navigation} language={"ru"} prompt={prompt}/>
             <View style={styles.divider}/>
-            <LanguageOption navigation={navigation} language={"Russian"} prompt={prompt}/>
+            <LanguageOption navigation={navigation} language={"es"} prompt={prompt}/>
             <View style={styles.divider}/>
-            <LanguageOption navigation={navigation} language={"Spanish"} prompt={prompt}/>
-            <View style={styles.divider}/>
-            <LanguageOption navigation={navigation} language={"Turkish"} prompt={prompt}/>
+            <LanguageOption navigation={navigation} language={"tr"} prompt={prompt}/>
         </View>
         </View>
     )
