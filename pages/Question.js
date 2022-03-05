@@ -132,7 +132,7 @@ export function Question({ route, navigation}) {
 
                         {question.tags.length > 0 ? (
                                 <View style={styles.tags_container}>
-                                    <MaterialCommunityIcons name="tag" size={24} color={Colors.chatty}/>
+                                    <MaterialCommunityIcons name="tag" size={24} color={Colors.lighter_purple}/>
                                     { tags }
                                 </View>
                             ):(
@@ -264,12 +264,12 @@ const styles = StyleSheet.create({
     tag: {
         padding: 5,
         borderRadius: 99999,
-        backgroundColor: Colors.chatty,
+        backgroundColor: Colors.lighter_purple,
         marginLeft: 5,
     },
     tag_text: {
         color: 'white',
-        fontSize: 12,
+        fontSize: 15,
     },
     comments_container: {
         marginTop: 10,

@@ -31,7 +31,7 @@ export default function App() {
         <Tab.Navigator
           screenOptions={
             {
-              "tabBarActiveTintColor": Colors.chatty,
+              "tabBarActiveTintColor": Colors.lighter_purple,
               "tabBarInactiveTintColor": Colors.lighter_purplegrey,
               "tabBarLabelStyle": {
                 "fontSize": 16

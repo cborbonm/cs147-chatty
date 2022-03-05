@@ -22,9 +22,40 @@ export default function NewQuestion({ route, navigation }) {
     let language = params.language;
 
     const [text, setText] = React.useState("");
-    const [tags, setTags] = React.useState([]);
+    var tags = [];
 
     var disabled = !language || !text;
+
+    function Tag( {tag} ) {
+        const [selected, setSelected] = React.useState(false);
+        return (
+            <Pressable 
+                style={[
+                    {backgroundColor: selected ? Colors.lighter_purple : "white"},
+                    styles.tag
+                ]}
+                onPress={ () => {
+                    setSelected(!selected);
+                    if (!selected) { // unsure why it has to be !selected, but it works
+                        tags.push(tag);
+                    } else {
+                        const index = tags.indexOf(tag);
+                        tags.splice(index, 1); // remove one tag in the array
+                    }
+                    console.log(tags);
+                }} 
+            >
+                <Text 
+                    style={[
+                        {color: selected ? "white" : Colors.purplegrey},
+                        styles.tagText
+                    ]}
+                >
+                        {tag}
+                </Text>
+            </Pressable>
+        );
+    }
 
     return (
         <View style={styles.container}>
@@ -58,37 +89,19 @@ export default function NewQuestion({ route, navigation }) {
 
             {/* tag list */}
             <View style={styles.addTagsDiv}>
-                <MaterialCommunityIcons name="tag" size={20} color={Colors.chatty}/>
+                <MaterialCommunityIcons name="tag" size={20} color={Colors.lighter_purple}/>
                 <Text style={styles.addTags}>Add tags (optional)</Text>
             </View>
             <View style={styles.tagDiv}>
-                <Pressable style={styles.tag}>
-                    <Text style={styles.tagText}>#casual</Text>
-                </Pressable>
-                <Pressable style={styles.tag}>
-                    <Text style={styles.tagText}>#stranger</Text>
-                </Pressable>
-                <Pressable style={styles.tag}>
-                    <Text style={styles.tagText}>#friends</Text>
-                </Pressable>
-                <Pressable style={styles.tag}>
-                    <Text style={styles.tagText}>#slang</Text>
-                </Pressable>
-                <Pressable style={styles.tag}>
-                    <Text style={styles.tagText}>#online</Text>
-                </Pressable>
-                <Pressable style={styles.tag}>
-                    <Text style={styles.tagText}>#acquaintances</Text>
-                </Pressable>
-                <Pressable style={styles.tag}>
-                    <Text style={styles.tagText}>#business</Text>
-                </Pressable>
-                <Pressable style={styles.tag}>
-                    <Text style={styles.tagText}>#formal</Text>
-                </Pressable>
-                <Pressable style={styles.tag}>
-                    <Text style={styles.tagText}>#school</Text>
-                </Pressable>
+                <Tag tag="#casual" />
+                <Tag tag="#stranger" />
+                <Tag tag="#friends" />
+                <Tag tag="#slang" />
+                <Tag tag="#online" />
+                <Tag tag="#acquaintances" />
+                <Tag tag="#business" />
+                <Tag tag="#formal" />
+                <Tag tag="#school" />
             </View>
 
             {/* submit button */}
@@ -109,7 +122,7 @@ export default function NewQuestion({ route, navigation }) {
                         },
                         timestamp: 'Just now',
                         question: text,
-                        tags: ['#formal', '#business'],
+                        tags: tags,
                         comments: [
                         ],
                     } 
@@ -185,7 +198,6 @@ const styles = StyleSheet.create({
     tag: {
         display: "flex",
         alignItems: "center",
-        backgroundColor: "white",
         margin: 5,
         borderWidth: 1,
         borderColor: Colors.lavender,
@@ -198,7 +210,6 @@ const styles = StyleSheet.create({
     },
     tagText: {
         fontSize: 15,
-        color: Colors.purplegrey
     },
     submitButton: {
         display: "flex",
