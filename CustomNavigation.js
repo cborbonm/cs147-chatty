@@ -11,6 +11,7 @@ import {
   Dimensions,
   Pressable,
   SafeAreaView,
+  Button,
 } from 'react-native';
 
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -26,6 +27,7 @@ import NewQuestionPromptList from "./pages/NewQuestionPromptList";
 import NewQuestion from "./pages/NewQuestion";
 import LanguageDropDown from "./pages/LanguageDropDown";
 import Question from "./pages/Question";
+import QuestionPosted from "./pages/QuestionPosted";
 
 import Profile from "./pages/Profile";
 import Colors from "./Themes/colors"
@@ -40,14 +42,14 @@ const ChatNavigator = () => {
     <Stack.Navigator initialRouteName="Chat">
       <Stack.Group screenOptions={{ 
         headerBackTitle: null, headerStyle: {
-            backgroundColor: Colors.background,
-            borderBottomColor: Colors.lavender,
-            borderBottomWidth: 1,
-          }, 
-          headerTintColor: Colors.chatty, 
-          headerTitleStyle: {
-            fontWeight: '400', 
-          },
+          backgroundColor: Colors.background,
+          borderBottomColor: Colors.lavender,
+          borderBottomWidth: 1,
+        }, 
+        headerTintColor: Colors.chatty, 
+        headerTitleStyle: {
+          fontWeight: '400', 
+        },
       }}>
         <Stack.Screen name="Chat" 
           component={Chat} 
@@ -72,14 +74,14 @@ const MatchNavigator = () => {
       <Stack.Navigator initialRouteName="Match">
         <Stack.Group screenOptions={{ 
           headerBackTitle: null, headerStyle: {
-              backgroundColor: Colors.background,
-              borderBottomColor: Colors.lavender,
-              borderBottomWidth: 1,
-            }, 
-            headerTintColor: Colors.chatty, 
-            headerTitleStyle: {
-              fontWeight: '400', 
-            },
+            backgroundColor: Colors.background,
+            borderBottomColor: Colors.lavender,
+            borderBottomWidth: 1,
+          }, 
+          headerTintColor: Colors.chatty, 
+          headerTitleStyle: {
+            fontWeight: '400', 
+          },
         }}>
           <Stack.Screen name="Match" 
             component={Match} 
@@ -105,14 +107,14 @@ export {MatchNavigator}; // Stack-Navigator for Match Tab
       <Stack.Navigator initialRouteName="Forum">
         <Stack.Group screenOptions={{ 
           headerBackTitle: null, headerStyle: {
-              backgroundColor: Colors.background,
-              borderBottomColor: Colors.lavender,
-              borderBottomWidth: 1,
-            }, 
-            headerTintColor: Colors.chatty, 
-            headerTitleStyle: {
-              fontWeight: '400', 
-            },
+            backgroundColor: Colors.background,
+            borderBottomColor: Colors.lavender,
+            borderBottomWidth: 1,
+          }, 
+          headerTintColor: Colors.chatty, 
+          headerTitleStyle: {
+            fontWeight: '400', 
+          },
         }}>
           {/* pass props: https://stackoverflow.com/questions/60439210/how-to-pass-props-to-screen-component-with-a-tab-navigator */}
           <Stack.Screen name="Forum" 
@@ -146,6 +148,27 @@ export {MatchNavigator}; // Stack-Navigator for Match Tab
           <Stack.Screen name="NewQuestion" component={NewQuestion} options={{ title: 'New Question' }}/>
           <Stack.Screen name="LanguageDropDown" component={LanguageDropDown} options={{ title: 'Choose Language' }}/>
           <Stack.Screen name="Question" component={Question} options={{ title: 'Question' }}/>
+          <Stack.Screen name="QuestionPosted" 
+            component={QuestionPosted} 
+            options={
+              ({ navigation }) => ({
+                title: 'Question',
+                headerRight: () =>
+                  <Button
+                    title="Done"
+                    onPress={ () => {
+                      navigation.navigate("Forum");
+                      }
+                    }
+                  />
+                ,
+                headerRightContainerStyle: {
+                  paddingRight: 10,
+                },
+                headerLeft: ()=> null,
+              })
+            }
+          />
         </Stack.Group>
       </Stack.Navigator>
     );
@@ -158,14 +181,14 @@ export {ForumNavigator};  // Stack-Navigator for Forum Tab
       <Stack.Navigator initialRouteName="Profile">
         <Stack.Group screenOptions={{ 
           headerBackTitle: null, headerStyle: {
-              backgroundColor: Colors.background,
-              borderBottomColor: Colors.lavender,
-              borderBottomWidth: 1,
-            }, 
-            headerTintColor: Colors.chatty, 
-            headerTitleStyle: {
-              fontWeight: '400', 
-            },
+            backgroundColor: Colors.background,
+            borderBottomColor: Colors.lavender,
+            borderBottomWidth: 1,
+          }, 
+          headerTintColor: Colors.chatty, 
+          headerTitleStyle: {
+            fontWeight: '400', 
+          },
         }}>
           <Stack.Screen name="Profile" 
             component={Profile} 

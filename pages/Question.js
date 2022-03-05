@@ -58,7 +58,7 @@ function pushComment(comments, com, i) {
     )
 }
 
-export function Question({ route, navigation}) {
+export function Question({ route, navigation }) {
 
     // hide bottom nav
     React.useEffect(() => {

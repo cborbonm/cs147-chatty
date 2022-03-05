@@ -106,7 +106,7 @@ export default function NewQuestion({ route, navigation }) {
 
             {/* submit button */}
             <Pressable 
-                onPress={ () => navigation.navigate("Question", { 
+                onPress={ () => navigation.navigate("QuestionPosted", { 
                     question: {
                         user: { 
                             name:'me',
