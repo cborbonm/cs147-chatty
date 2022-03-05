@@ -1,104 +1,61 @@
 import {
     StyleSheet,
     Text,
-    TextInput,
     View,
-    Image,
-    Dimensions,
     Pressable,
 } from 'react-native';
 
 import Colors from "../Themes/colors";
-import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
+
+function LanguageOption( {navigation, language, prompt} ) {
+    return (
+        <Pressable // press whole row
+            onPress={ () => navigation.navigate("NewQuestion", {language: language, prompt: prompt}) } 
+            style={({ pressed }) => [
+            {
+                backgroundColor: pressed ? Colors.pressed_background : "white",
+            },
+            styles.language_container
+        ]}>
+            <Text style={styles.language}>{language}</Text>
+        </Pressable>
+    );
+}
 
 export default function LanguageDropDown({ route, navigation }) {
     let language = route.params.language;
+    const prompt = route.params.prompt;
+
     return (
         <View style={styles.container}>
         <View style={styles.languagesDiv}>
-        <Pressable onPress={ () => {
-                navigation.navigate("NewQuestion", {language: "Arabic", prompt: route.params.prompt});
-            }}>
-                <Text style={styles.language}> Arabic </Text>
-            </Pressable>
+            <LanguageOption navigation={navigation} language={"Arabic"} prompt={prompt}/>
             <View style={styles.divider}/>
-            <Pressable onPress={ () => {
-                navigation.navigate("NewQuestion", {language: "Chinese (Simplified)", prompt: route.params.prompt});
-            }}>
-                <Text style={styles.language}> Chinese (Simplified) </Text>
-            </Pressable>
+            <LanguageOption navigation={navigation} language={"Chinese (Simplified)"} prompt={prompt}/>
             <View style={styles.divider}/>
-            <Pressable onPress={ () => {
-                navigation.navigate("NewQuestion", {language: "Chinese (Traditional)", prompt: route.params.prompt});
-            }}>
-                <Text style={styles.language}> Chinese (Traditional) </Text>
-            </Pressable>
+            <LanguageOption navigation={navigation} language={"Chinese (Traditional)"} prompt={prompt}/>
             <View style={styles.divider}/>
-            <Pressable onPress={ () => {
-                navigation.navigate("NewQuestion", {language: "Dutch", prompt: route.params.prompt});
-            }}>
-                <Text style={styles.language}> Dutch </Text>
-            </Pressable>
+            <LanguageOption navigation={navigation} language={"Dutch"} prompt={prompt}/>
             <View style={styles.divider}/>
-            <Pressable onPress={ () => {
-                navigation.navigate("NewQuestion", {language: "English", prompt: route.params.prompt});
-            }}>
-                <Text style={styles.language}> English </Text>
-            </Pressable>
+            <LanguageOption navigation={navigation} language={"English"} prompt={prompt}/>
             <View style={styles.divider}/>
-            <Pressable onPress={ () => {
-                navigation.navigate("NewQuestion", {language: "French", prompt: route.params.prompt});
-            }}>
-                <Text style={styles.language}> French </Text>
-            </Pressable>
+            <LanguageOption navigation={navigation} language={"French"} prompt={prompt}/>
             <View style={styles.divider}/>
-            <Pressable onPress={ () => {
-                navigation.navigate("NewQuestion", {language: "German", prompt: route.params.prompt});
-            }}>
-                <Text style={styles.language}> German </Text>
-            </Pressable>
+            <LanguageOption navigation={navigation} language={"German"} prompt={prompt}/>
             <View style={styles.divider}/>
-            <Pressable onPress={ () => {
-                navigation.navigate("NewQuestion", {language: "Italian", prompt: route.params.prompt});
-            }}>
-                <Text style={styles.language}> Italian </Text>
-            </Pressable>
+            <LanguageOption navigation={navigation} language={"Italian"} prompt={prompt}/>
             <View style={styles.divider}/>
-            <Pressable onPress={ () => {
-                navigation.navigate("NewQuestion", {language: "Japanese", prompt: route.params.prompt});
-            }}>
-                <Text style={styles.language}> Japanese </Text>
-            </Pressable>
+            <LanguageOption navigation={navigation} language={"Japanese"} prompt={prompt}/>
             <View style={styles.divider}/>
-            <Pressable onPress={ () => {
-                navigation.navigate("NewQuestion", {language: "Norwegian", prompt: route.params.prompt});
-            }}>
-                <Text style={styles.language}> Norwegian </Text>
-            </Pressable>
+            <LanguageOption navigation={navigation} language={"Norwegian"} prompt={prompt}/>
             <View style={styles.divider}/>
-            <Pressable onPress={ () => {
-                navigation.navigate("NewQuestion", {language: "Portuguese", prompt: route.params.prompt});
-            }}>
-                <Text style={styles.language}> Portuguese </Text>
-            </Pressable>
+            <LanguageOption navigation={navigation} language={"Portuguese"} prompt={prompt}/>
             <View style={styles.divider}/>
-            <Pressable onPress={ () => {
-                navigation.navigate("NewQuestion", {language: "Russian", prompt: route.params.prompt});
-            }}>
-                <Text style={styles.language}> Russian </Text>
-            </Pressable>
+            <LanguageOption navigation={navigation} language={"Russian"} prompt={prompt}/>
             <View style={styles.divider}/>
-            <Pressable onPress={ () => {
-                navigation.navigate("NewQuestion", {language: "Spanish", prompt: route.params.prompt});
-            }}>
-                <Text style={styles.language}> Spanish </Text>
-            </Pressable>
+            <LanguageOption navigation={navigation} language={"Spanish"} prompt={prompt}/>
             <View style={styles.divider}/>
-            <Pressable onPress={ () => {
-                navigation.navigate("NewQuestion", {language: "Turkish", prompt: route.params.prompt});
-            }}>
-                <Text style={styles.language}> Turkish </Text>
-            </Pressable>
+            <LanguageOption navigation={navigation} language={"Turkish"} prompt={prompt}/>
         </View>
         </View>
     )
@@ -111,7 +68,7 @@ const styles = StyleSheet.create({
       flex: 1,
     },
     languagesDiv: {
-      backgroundColor: 'white',
+      //backgroundColor: 'white',
       borderColor: Colors.lavender,
       borderTopWidth: 1,
       borderBottomWidth: 1,
@@ -119,16 +76,23 @@ const styles = StyleSheet.create({
       alignItems: "center",
       justifyContent: "center",
     },
-    language: {
-        padding: 15,
-        fontSize: 16,
-        display: "flex",
-        justifyContent: "flex-start",
-    },
     divider: {
       width: "95%",
       height: 1,
       backgroundColor: Colors.lavender,
+    },
+    // individual language prompt styling
+    language_container: {
+        display: "flex",
+        flexDirection: "row",
+        width: "100%",
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    language: {
+        padding: 15,
+        fontSize: 16,
+        display: "flex",
     },
   });
   

@@ -45,31 +45,31 @@ export default function NewQuestion({ route, navigation}) {
             </View>
             <View style={styles.tagDiv}>
                 <Pressable style={styles.tag}>
-                    <Text style={styles.tagText}># casual</Text>
+                    <Text style={styles.tagText}>#casual</Text>
                 </Pressable>
                 <Pressable style={styles.tag}>
-                    <Text style={styles.tagText}># stranger</Text>
+                    <Text style={styles.tagText}>#stranger</Text>
                 </Pressable>
                 <Pressable style={styles.tag}>
-                    <Text style={styles.tagText}># friends</Text>
+                    <Text style={styles.tagText}>#friends</Text>
                 </Pressable>
                 <Pressable style={styles.tag}>
-                    <Text style={styles.tagText}># slang</Text>
+                    <Text style={styles.tagText}>#slang</Text>
                 </Pressable>
                 <Pressable style={styles.tag}>
-                    <Text style={styles.tagText}># online</Text>
+                    <Text style={styles.tagText}>#online</Text>
                 </Pressable>
                 <Pressable style={styles.tag}>
-                    <Text style={styles.tagText}># acquaintances</Text>
+                    <Text style={styles.tagText}>#acquaintances</Text>
                 </Pressable>
                 <Pressable style={styles.tag}>
-                    <Text style={styles.tagText}># business</Text>
+                    <Text style={styles.tagText}>#business</Text>
                 </Pressable>
                 <Pressable style={styles.tag}>
-                    <Text style={styles.tagText}># formal</Text>
+                    <Text style={styles.tagText}>#formal</Text>
                 </Pressable>
                 <Pressable style={styles.tag}>
-                    <Text style={styles.tagText}># school</Text>
+                    <Text style={styles.tagText}>#school</Text>
                 </Pressable>
             </View>
         </View>
