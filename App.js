@@ -14,21 +14,6 @@ import {
 import { useState, useEffect } from "react";
 import Colors from "./Themes/colors";
 
-import Chat from "./pages/Chat";
-
-import Match from "./pages/Match";
-
-import Forum from "./pages/Forum";
-import NewQuestionPromptList from "./pages/NewQuestionPromptList";
-import NewQuestion from "./pages/NewQuestion";
-import LanguageDropDown from "./pages/LanguageDropDown";
-import Question from "./pages/Question";
-
-import Profile from "./pages/Profile";
-
-import Header from "./pages/Header";
-import Nav from "./pages/Nav";
-
 import {ChatNavigator, MatchNavigator, ForumNavigator, ProfileNavigator } from './CustomNavigation'
 import { MaterialCommunityIcons, MaterialIcons, Ionicons, FontAwesome } from '@expo/vector-icons';
 
@@ -38,16 +23,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
-
-function Home({ navigation }) {
-  return (
-    <SafeAreaView style={styles.container}>
-        <Header page="Home" navigation={navigation}/>
-        <Forum navigation={navigation}/>
-        {/* <Nav /> */}
-    </SafeAreaView>
-  );
-}
 
 export default function App() {
   return (
