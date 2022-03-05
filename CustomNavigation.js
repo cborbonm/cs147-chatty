@@ -145,7 +145,23 @@ export {MatchNavigator}; // Stack-Navigator for Match Tab
           } 
           />
           <Stack.Screen name="NewQuestionPromptList" component={NewQuestionPromptList} options={{ title: 'New Question' }}/>
-          <Stack.Screen name="NewQuestion" component={NewQuestion} options={{ title: 'New Question' }}/>
+          <Stack.Screen name="NewQuestion" 
+            component={NewQuestion} 
+            options={
+              ({ navigation }) => ({
+                title: 'New Question',
+                headerRight: () =>
+                  <Button
+                    title="Cancel"
+                    onPress={ () => {
+                      navigation.navigate("Forum");
+                      }
+                    }
+                  />
+                ,
+              })
+            }
+          />
           <Stack.Screen name="LanguageDropDown" component={LanguageDropDown} options={{ title: 'Choose Language' }}/>
           <Stack.Screen name="Question" component={Question} options={{ title: 'Question' }}/>
           <Stack.Screen name="QuestionPosted" 
@@ -162,9 +178,6 @@ export {MatchNavigator}; // Stack-Navigator for Match Tab
                     }
                   />
                 ,
-                headerRightContainerStyle: {
-                  paddingRight: 10,
-                },
                 headerLeft: ()=> null,
               })
             }
