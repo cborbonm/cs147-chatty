@@ -1,3 +1,4 @@
+import React from "react";
 import { 
   StyleSheet, 
   Text, 
@@ -5,13 +6,33 @@ import {
   Pressable, 
   Image, 
   View, 
-  FlatList } 
+  FlatList 
+} 
 from "react-native";
 import Colors from "../Themes/colors";
 
-import NewQuestionPrompt from "./NewQuestionPrompt";
+function NewQuestionPrompt( {navigation, prompt} ) {
+  return (
+      <Pressable // press whole row
+          onPress={ () => navigation.navigate("NewQuestion", { prompt: prompt }) } 
+          style={({ pressed }) => [
+          {
+              backgroundColor: pressed ? Colors.pressed_background : "white",
+          },
+          styles.question_container
+      ]}>
+          <Text style={styles.question}>{prompt}</Text>
+      </Pressable>
+  );
+}
 
 export default function NewQuestionPromptList( {navigation} ) {
+  // hide bottom nav
+  React.useEffect(() => {
+    navigation.getParent()?.setOptions({ tabBarStyle: { display: "none" }});
+    return () => navigation.getParent()?.setOptions({ tabBarStyle: styles.bottom_action_goback });
+}, [navigation]);
+
   return (
     <View style={styles.container}>
         <View style={styles.subContainer}> 
@@ -97,5 +118,29 @@ const styles = StyleSheet.create({
     width: "95%",
     height: 1,
     backgroundColor: Colors.lavender,
+  },
+
+  // individual question prompt styling
+  question_container: {
+    display: "flex",
+    flexDirection: "row",
+    width: "100%",
+  },
+  question: {
+      padding: 15,
+      fontSize: 16,
+      display: "flex",
+      justifyContent: "flex-start",
+  },
+
+  // to bring back the bottom nav bar on the previous page
+  bottom_action_goback: {
+    backgroundColor: Colors.background,
+    height: 90,
+    paddingTop: 10,
+    shadowColor: Colors.purplegrey,
+    shadowOpacity: 0.3,
+    shadowRadius: 3,
+    shadowOffset: { height: -5 },
   },
 });

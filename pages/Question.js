@@ -45,7 +45,7 @@ function pushComment(comments, com, i) {
                 <View style={styles.name_timestamp_container}>
                     <View flexDirection="row" alignItems="baseline">
                         <Text style={styles.name}>{com.user.name} · </Text>
-                        <Text style={{color: Colors.lighter_purplegrey}}>
+                        <Text style={{color: Colors.medium_purplegrey}}>
                             {getLanguageName(com.user.native.language)}
                             {com.user.native.location.length > 0 ? " ("+com.user.native.location+")" : ''}
                         </Text>
@@ -60,6 +60,14 @@ function pushComment(comments, com, i) {
 }
 
 export function Question({ route, navigation}) {
+
+    // hide bottom nav
+    React.useEffect(() => {
+        navigation.getParent()?.setOptions({ tabBarStyle: { display: "none" }});
+        return () => navigation.getParent()?.setOptions({ tabBarStyle: styles.bottom_action_goback });
+    }, [navigation]);
+
+
     const params = route.params;
     const question = params.question;
     const [text, setText] = React.useState("");
@@ -209,7 +217,7 @@ export function Question({ route, navigation}) {
             </KeyboardAvoidingView>
         </View>
     );
-  }
+}
   
 export default Question;
 
@@ -274,6 +282,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
 
+    // comment input
     bottom_action: {
         backgroundColor: Colors.background,
         width:'100%',
@@ -284,15 +293,15 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.3,
         shadowRadius: 3,
         shadowOffset: { height: -5 },
-      },
-      comment_bar: {
+    },
+    comment_bar: {
         justifyContent: 'center', 
         alignItems: 'baseline',
         flexDirection: "row",
         paddingLeft: 15,
         flex: 4,
-      },
-      input: {
+    },
+    input: {
         width: '85%',
         marginLeft: 10,
         padding: 10,
@@ -302,8 +311,19 @@ const styles = StyleSheet.create({
         borderColor: Colors.lavender,
         backgroundColor: 'white',
         fontSize: 16,
-      },
-      button_container: {
+    },
+    button_container: {
         marginRight: 10,
-      },
+    },
+
+    // to bring back the bottom nav bar on the previous page
+    bottom_action_goback: {
+        backgroundColor: Colors.background,
+        height: 90,
+        paddingTop: 10,
+        shadowColor: Colors.purplegrey,
+        shadowOpacity: 0.3,
+        shadowRadius: 3,
+        shadowOffset: { height: -5 },
+    },
 });
