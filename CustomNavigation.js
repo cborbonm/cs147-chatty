@@ -28,6 +28,7 @@ import NewQuestion from "./pages/NewQuestion";
 import LanguageDropDown from "./pages/LanguageDropDown";
 import Question from "./pages/Question";
 import QuestionPosted from "./pages/QuestionPosted";
+import QuickMatchVideo from "./pages/QuickMatchVideo";
 
 import Profile from "./pages/Profile";
 import Colors from "./Themes/colors"
@@ -85,6 +86,17 @@ const MatchNavigator = () => {
         }}>
           <Stack.Screen name="Match" 
             component={Match} 
+            options= {({ navigation }) => ({
+              title: '',
+              headerLeft: () => <Image source={logo} style={styles.logo}/>,
+              headerLeftContainerStyle: {
+                paddingLeft: 10,
+              },
+            })
+          } 
+          />
+          <Stack.Screen name="QuickMatchVideo" 
+            component={QuickMatchVideo} 
             options= {({ navigation }) => ({
               title: '',
               headerLeft: () => <Image source={logo} style={styles.logo}/>,
