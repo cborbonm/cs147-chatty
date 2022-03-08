@@ -15,7 +15,7 @@ import { doc, getDoc } from "firebase/firestore";
 export function Match({ navigation }) {
     return (
         <View style={styles.container}>
-            <Text>Match</Text>
+            <Pressable onPress={() => {navigation.navigate("QuickMatchVideo")} }><Text>Press here to go to the video chat screen</Text></Pressable>
         </View>
     );
 }
