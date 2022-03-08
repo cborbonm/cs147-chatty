@@ -47,9 +47,10 @@ const ChatNavigator = () => {
           borderBottomColor: Colors.lavender,
           borderBottomWidth: 1,
         }, 
-        headerTintColor: Colors.chatty, 
+        headerTintColor: Colors.accent, 
         headerTitleStyle: {
           fontWeight: '400', 
+          color: Colors.chatty, 
         },
       }}>
         <Stack.Screen name="Chat" 
@@ -79,9 +80,10 @@ const MatchNavigator = () => {
             borderBottomColor: Colors.lavender,
             borderBottomWidth: 1,
           }, 
-          headerTintColor: Colors.chatty, 
+          headerTintColor: Colors.accent, 
           headerTitleStyle: {
             fontWeight: '400', 
+            color: Colors.chatty, 
           },
         }}>
           <Stack.Screen name="Match" 
@@ -123,9 +125,10 @@ export {MatchNavigator}; // Stack-Navigator for Match Tab
             borderBottomColor: Colors.lavender,
             borderBottomWidth: 1,
           }, 
-          headerTintColor: Colors.chatty, 
+          headerTintColor: Colors.accent, 
           headerTitleStyle: {
             fontWeight: '400', 
+            color: Colors.chatty, 
           },
         }}>
           {/* pass props: https://stackoverflow.com/questions/60439210/how-to-pass-props-to-screen-component-with-a-tab-navigator */}
@@ -144,7 +147,7 @@ export {MatchNavigator}; // Stack-Navigator for Match Tab
                     { opacity: pressed ? 0.5 : 1.0 }
                   ]}
                 >
-                  <MaterialCommunityIcons name="square-edit-outline" size={36} color={Colors.chatty}/>
+                  <MaterialCommunityIcons name="square-edit-outline" size={36} color={Colors.accent}/>
                 </Pressable>
               ,
               headerLeftContainerStyle: {
@@ -164,6 +167,7 @@ export {MatchNavigator}; // Stack-Navigator for Match Tab
                 title: 'New Question',
                 headerRight: () =>
                   <Button
+                    color="#028ca8"
                     title="Cancel"
                     onPress={ () => {
                       navigation.navigate("Forum");
@@ -210,9 +214,10 @@ export {ForumNavigator};  // Stack-Navigator for Forum Tab
             borderBottomColor: Colors.lavender,
             borderBottomWidth: 1,
           }, 
-          headerTintColor: Colors.chatty, 
+          headerTintColor: Colors.accent, 
           headerTitleStyle: {
             fontWeight: '400', 
+            color: Colors.chatty, 
           },
         }}>
           <Stack.Screen name="Profile" 

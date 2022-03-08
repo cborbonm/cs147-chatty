@@ -142,7 +142,7 @@ export function Question({ route, navigation }) {
                         
 
                         <View style={styles.comments_container}>
-                            <MaterialCommunityIcons name="comment" size={16} color={Colors.lavender} />
+                            <MaterialCommunityIcons name="comment" size={16} color={question.comments.length == 0 ? Colors.accent : Colors.lavender} />
                             <Text style={styles.num_comments}>{question.comments.length}</Text>
                         </View>
                     </View>
@@ -169,7 +169,7 @@ export function Question({ route, navigation }) {
             <KeyboardAvoidingView 
                 behavior={Platform.OS == "ios" ? "position" : "height"}
                 style={{ flex: 1, justifyContent: 'flex-end', }}
-                keyboardVerticalOffset = {95}
+                keyboardVerticalOffset = {90}
             >
             <SafeAreaView>
             
@@ -293,10 +293,12 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         paddingTop: 10,
-        shadowColor: Colors.purplegrey,
-        shadowOpacity: 0.3,
-        shadowRadius: 3,
-        shadowOffset: { height: -5 },
+        borderTopColor: Colors.lavender,
+        borderTopWidth: 1,
+        // shadowColor: Colors.purplegrey,
+        // shadowOpacity: 0.3,
+        // shadowRadius: 3,
+        // shadowOffset: { height: -5 },
     },
     comment_bar: {
         justifyContent: 'center', 
@@ -323,11 +325,13 @@ const styles = StyleSheet.create({
     // to bring back the bottom nav bar on the previous page
     bottom_action_goback: {
         backgroundColor: Colors.background,
-        height: 90,
-        paddingTop: 10,
-        shadowColor: Colors.purplegrey,
-        shadowOpacity: 0.3,
-        shadowRadius: 3,
-        shadowOffset: { height: -5 },
+        // height: 90,
+        // paddingTop: 10,
+        borderTopColor: Colors.lavender,
+        borderTopWidth: 1,
+        // shadowColor: Colors.purplegrey,
+        // shadowOpacity: 0.3,
+        // shadowRadius: 3,
+        // shadowOffset: { height: -5 },
     },
 });

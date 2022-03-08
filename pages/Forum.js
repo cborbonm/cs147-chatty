@@ -53,7 +53,7 @@ export function ForumQuestion({ question, navigation}) {
 
                 <Text style={{fontSize: 16}} numberOfLines={3}>{question.question}</Text>
                 <View style={styles.comments_container}>
-                    <MaterialCommunityIcons name="comment" size={16} color={Colors.lavender} />
+                    <MaterialCommunityIcons name="comment" size={16} color={question.comments.length == 0 ? Colors.accent : Colors.lavender} />
                     <Text style={styles.num_comments}>{question.comments.length}</Text>
                 </View>
             </View>

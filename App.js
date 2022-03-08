@@ -31,10 +31,10 @@ export default function App() {
         <Tab.Navigator
           screenOptions={
             {
-              "tabBarActiveTintColor": Colors.lighter_purple,
+              "tabBarActiveTintColor": Colors.accent,
               "tabBarInactiveTintColor": Colors.lighter_purplegrey,
               "tabBarLabelStyle": {
-                "fontSize": 16
+                "fontSize": 12
               },
               "tabBarStyle": styles.bottom_action,
               "headerShown": false,
@@ -46,7 +46,7 @@ export default function App() {
             component={ChatNavigator}
             options={{
               tabBarIcon: ({ color }) => (
-                <Ionicons name="chatbubble-ellipses" size={24} color={color} />
+                <Ionicons name="chatbubble-ellipses" size={20} color={color} />
               ),
             }}
           />
@@ -55,7 +55,7 @@ export default function App() {
             component={MatchNavigator}
             options={{
               tabBarIcon: ({ color }) => (
-                <MaterialCommunityIcons name="account-search" size={24} color={color} />
+                <MaterialCommunityIcons name="account-search" size={20} color={color} />
               ),
             }}
           />
@@ -64,7 +64,7 @@ export default function App() {
             component={ForumNavigator}
             options={{
               tabBarIcon: ({ color }) => (
-                <MaterialIcons name="people-alt" size={24} color={color} />
+                <MaterialIcons name="people-alt" size={20} color={color} />
               ),
             }}
           />
@@ -73,7 +73,7 @@ export default function App() {
             component={ProfileNavigator}
             options={{
               tabBarIcon: ({ color }) => (
-                <FontAwesome name="user-circle" size={24} color={color} />
+                <FontAwesome name="user-circle" size={20} color={color} />
               ),
             }}
           />
@@ -92,11 +92,13 @@ const styles = StyleSheet.create({
   },
   bottom_action: {
     backgroundColor: Colors.background,
-    height: 90,
-    paddingTop: 10,
-    shadowColor: Colors.purplegrey,
-    shadowOpacity: 0.3,
-    shadowRadius: 3,
-    shadowOffset: { height: -5 },
+    //height: 90,
+    //paddingTop: 10,
+    borderTopColor: Colors.lavender,
+    borderTopWidth: 1,
+    // shadowColor: Colors.purplegrey,
+    // shadowOpacity: 0.3,
+    // shadowRadius: 3,
+    // shadowOffset: { height: -5 },
   },
 });
