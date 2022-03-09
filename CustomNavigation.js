@@ -23,6 +23,8 @@ import Chat from "./pages/Chat";
 import Match from "./pages/Match";
 import QuickMatchScreen from "./pages/QuickMatchScreen";
 import QuickMatchVideo from "./pages/QuickMatchVideo";
+import QuickMatchNoVideo from "./pages/QuickMatchNoVideo";
+import CallEnded from "./pages/CallEnded";
 
 import Forum from "./pages/Forum";
 import NewQuestionPromptList from "./pages/NewQuestionPromptList";
@@ -109,10 +111,23 @@ const MatchNavigator = () => {
             component={QuickMatchVideo} 
             options= {({ navigation }) => ({
               title: '',
-              headerLeft: () => <Image source={logo} style={styles.logo}/>,
-              headerLeftContainerStyle: {
-                paddingLeft: 10,
-              },
+              header: () => <View></View>
+            })
+          } 
+          />
+          <Stack.Screen name="QuickMatchNoVideo" 
+            component={QuickMatchNoVideo} 
+            options= {({ navigation }) => ({
+              title: '',
+              header: () => <View></View>
+            })
+          } 
+          />
+          <Stack.Screen name="CallEnded" 
+            component={CallEnded} 
+            options= {({ navigation }) => ({
+              title: '',
+              header: () => <View></View>
             })
           } 
           />
