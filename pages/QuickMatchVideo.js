@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
       alignSelf: 'flex-end',
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: Colors.lighter_purple,
+      backgroundColor: Colors.chatty,
       marginBottom: 20,
       borderRadius: 40,
       height: 50,
