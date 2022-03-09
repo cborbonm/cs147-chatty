@@ -4,6 +4,7 @@ import {
     Switch,
     Text,
     TextInput,
+    TouchableOpacity,
     View,
     Image,
     Dimensions,
@@ -13,13 +14,17 @@ import {
 import Colors from "../Themes/colors";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import getLanguageName from "../utils/getLanguageName";
-
 const windowWidth = Dimensions.get('window').width;
 
 export default function QuickMatchScreen({ route, navigation }) {
     const [isEnabled, setIsEnabled] = useState(false);
     const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+
+    // hide bottom nav
+    React.useEffect(() => {
+        navigation.getParent()?.setOptions({ tabBarStyle: { display: "none" }});
+        return () => navigation.getParent()?.setOptions({ tabBarStyle: styles.bottom_action_goback });
+    }, [navigation]);
 
     return (
         <View style={styles.container}>
@@ -44,9 +49,15 @@ export default function QuickMatchScreen({ route, navigation }) {
                 value={isEnabled}
                 />
             </View>
-            <Pressable style={styles.quickmatch_button} onPress={() => {navigation.navigate("QuickMatchVideo")}}>
+            <TouchableOpacity style={styles.quickmatch_button} onPress={() => {
+                if (isEnabled) {
+                    navigation.navigate("QuickMatchVideo");
+                } else {
+                    navigation.navigate("QuickMatchNoVideo");
+                }
+                }}>
                 <Text style={styles.button_text}>Find a Match</Text>
-            </Pressable>
+            </TouchableOpacity>
         </View>
     );
 }
