@@ -21,6 +21,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Chat from "./pages/Chat";
 
 import Match from "./pages/Match";
+import QuickMatchScreen from "./pages/QuickMatchScreen";
+import QuickMatchVideo from "./pages/QuickMatchVideo";
 
 import Forum from "./pages/Forum";
 import NewQuestionPromptList from "./pages/NewQuestionPromptList";
@@ -28,7 +30,6 @@ import NewQuestion from "./pages/NewQuestion";
 import LanguageDropDown from "./pages/LanguageDropDown";
 import Question from "./pages/Question";
 import QuestionPosted from "./pages/QuestionPosted";
-import QuickMatchVideo from "./pages/QuickMatchVideo";
 
 import Profile from "./pages/Profile";
 import Colors from "./Themes/colors"
@@ -94,6 +95,13 @@ const MatchNavigator = () => {
               headerLeftContainerStyle: {
                 paddingLeft: 10,
               },
+            })
+          } 
+          />
+          <Stack.Screen name="QuickMatchScreen" 
+            component={QuickMatchScreen} 
+            options= {({ navigation }) => ({
+              title: 'Quick Match',
             })
           } 
           />
