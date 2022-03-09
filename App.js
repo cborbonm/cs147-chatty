@@ -42,39 +42,43 @@ export default function App() {
           }
         >
           <Tab.Screen
-            name="Chat"
+            name="ChatNav"
             component={ChatNavigator}
             options={{
               tabBarIcon: ({ color }) => (
                 <Ionicons name="chatbubble-ellipses" size={20} color={color} />
               ),
+              title: 'Chat',
             }}
           />
           <Tab.Screen
-            name="Match"
+            name="MatchNav"
             component={MatchNavigator}
             options={{
               tabBarIcon: ({ color }) => (
                 <MaterialCommunityIcons name="account-search" size={20} color={color} />
               ),
+              title: 'Match',
             }}
           />
           <Tab.Screen
-            name="Learn"
+            name="LearnNav"
             component={ForumNavigator}
             options={{
               tabBarIcon: ({ color }) => (
                 <MaterialIcons name="people-alt" size={20} color={color} />
               ),
+              title: 'Learn',
             }}
           />
           <Tab.Screen
-            name="Profile"
+            name="ProfileNav"
             component={ProfileNavigator}
             options={{
               tabBarIcon: ({ color }) => (
                 <FontAwesome name="user-circle" size={20} color={color} />
               ),
+              title: 'Profile',
             }}
           />
         </Tab.Navigator>
