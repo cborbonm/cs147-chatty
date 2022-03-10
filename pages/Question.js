@@ -15,12 +15,7 @@ import {
 import Colors from "../Themes/colors";
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 
-import { db } from "../firebase";
-import { doc, getDoc } from "firebase/firestore";
-
 import getLanguageName from '../utils/getLanguageName';
-
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -103,8 +98,12 @@ export function Question({ route, navigation }) {
             <ScrollView 
                 style={{ height: '80%',}} 
                 ref={scrollRef} 
-                onContentSizeChange={() => scrollRef.current.scrollToEnd()}
+                onContentSizeChange={
+                    () => scrollRef.current.scrollToEnd()
+                }
             > 
+                {/* trying to get it to NOT scroll all the way to the end on load */}
+                {/* { useEffect(() => scrollRef.current.scrollTo({y:0})) } */}
                 <View style={styles.post}>
                     <View style={styles.left}>
                         <FontAwesome name="user-circle" size={24} color={Colors.chatty} />

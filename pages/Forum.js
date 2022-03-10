@@ -9,7 +9,7 @@ import {
     Image,
     SafeAreaView,
 } from 'react-native';
-// import ForumQuestion from './ForumQuestion';
+
 import Colors from "../Themes/colors";
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 
