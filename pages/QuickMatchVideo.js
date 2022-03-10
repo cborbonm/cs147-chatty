@@ -10,13 +10,17 @@ import {
 import Colors from "../Themes/colors";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Camera } from 'expo-camera';
+import { Video } from 'expo-av';
 
 import { db } from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
 
 export function QuickMatchVideo({ navigation }) {
-    const [hasPermission, setHasPermission] = useState(null);
-    const [type, setType] = useState(Camera.Constants.Type.front);
+  //camera vars
+  const [hasPermission, setHasPermission] = useState(null);
+  const [type, setType] = useState(Camera.Constants.Type.front);
+  // video vars
+  const video = React.useRef(null);
 
   useEffect(() => {
     (async () => {
@@ -34,6 +38,17 @@ export function QuickMatchVideo({ navigation }) {
 
   return (
     <View style={styles.container}>
+      <Video
+        ref={video}
+        style={styles.video}
+        source={require('../data/videochatVideo.mov')}
+        resizeMode="contain"
+        isLooping
+        shouldPlay
+      >
+      </Video>
+      <Camera style={styles.camera} type={type}>
+      </Camera>
       <View style={styles.twoButtons}>
         <View style={styles.buttonContainer}>
           <TouchableOpacity
@@ -53,8 +68,6 @@ export function QuickMatchVideo({ navigation }) {
           </TouchableOpacity>
         </View>
       </View>
-      <Camera style={styles.camera} type={type}>
-      </Camera>
     </View>
   );
 }
@@ -66,19 +79,20 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     height: '100%',
+    margin: 0,
   },
   camera: {
     position: "absolute",
-    width: '40%',
+    width: '35%',
     height: '25%',
-    margin: 20,
-    marginTop: 50,
+    bottom: 100,
+    right: 25,
   },
   twoButtons: {
     flex: 1,
     flexDirection: 'row',
-    position: "relative",
-    backgroundColor: Colors.lavender,
+    position: "absolute",
+    bottom: 0,
   },
   buttonContainer: {
     flex: 1,
@@ -87,7 +101,7 @@ const styles = StyleSheet.create({
   },
   button: {
     flex: 1,
-    alignSelf: 'flex-end',
+    //alignSelf: 'flex-end',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: Colors.chatty,
@@ -98,6 +112,12 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 25,
     color: 'white',
+  },
+  video: {
+    flex: 1,
+    alignSelf: 'center',
+    width: '130%',
+    height: '130%',
   },
   // to bring back the bottom nav bar on the previous page
   bottom_action_goback: {
