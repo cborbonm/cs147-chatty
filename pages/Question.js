@@ -15,14 +15,10 @@ import {
 import Colors from "../Themes/colors";
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 
-import { db } from "../firebase";
-import { doc, getDoc } from "firebase/firestore";
-
 import getLanguageName from '../utils/getLanguageName';
 
-import AsyncStorage from '@react-native-async-storage/async-storage';
-
 const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 function translateLevel(level) {
     if (level == 1) {
@@ -101,9 +97,10 @@ export function Question({ route, navigation }) {
         <View style={styles.container}>
             {/* question and comments */}
             <ScrollView 
-                style={{ height: '80%',}} 
-                ref={scrollRef} 
-                onContentSizeChange={() => scrollRef.current.scrollToEnd()}
+                //style={{ top: 0, bottom: 10 }} 
+                style={{ height: '100%' }} 
+                ref={scrollRef}
+                contentContainerStyle={{paddingBottom: 80}}
             > 
                 <View style={styles.post}>
                     <View style={styles.left}>
@@ -171,8 +168,8 @@ export function Question({ route, navigation }) {
             { index > -1 ? (
             <KeyboardAvoidingView 
                 behavior={Platform.OS == "ios" ? "position" : "height"}
-                style={{ flex: 1, justifyContent: 'flex-end', }}
-                keyboardVerticalOffset = {90}
+                style={{ flex: 1, }}
+                keyboardVerticalOffset = {40}
             >
             <SafeAreaView>
             
@@ -185,7 +182,7 @@ export function Question({ route, navigation }) {
                         value={text}
                         placeholder="Type a comment"
                         placeholderTextColor={Colors.lighter_purplegrey}
-                        multiline={true}
+                        multiline
                         style={styles.input}
                     />
                     </View>
@@ -213,6 +210,7 @@ export function Question({ route, navigation }) {
                                 setText('');
                                 setComments([...comments]);
                                 addComment(newComment, index);
+                                scrollRef.current.scrollToEnd();
                             }
                         }
                         color={Colors.accent}
@@ -296,6 +294,10 @@ const styles = StyleSheet.create({
 
     // comment input
     bottom_action: {
+        position:'absolute',
+        bottom: 0,
+        paddingBottom: 55,
+        maxHeight: 250,
         backgroundColor: Colors.background,
         width:'100%',
         flexDirection: 'row',
@@ -303,10 +305,6 @@ const styles = StyleSheet.create({
         paddingTop: 10,
         borderTopColor: Colors.lavender,
         borderTopWidth: 1,
-        // shadowColor: Colors.purplegrey,
-        // shadowOpacity: 0.3,
-        // shadowRadius: 3,
-        // shadowOffset: { height: -5 },
     },
     comment_bar: {
         justifyContent: 'center', 
