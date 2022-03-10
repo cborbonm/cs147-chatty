@@ -4,6 +4,7 @@ import {
     View,
     Pressable,
     FlatList,
+    Dimensions,
 } from 'react-native';
 import Colors from "../Themes/colors";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -12,15 +13,17 @@ import { db } from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
 
 
-import logo from "../assets/Icons/chatty.png";
+// import logo from "../assets/Icons/chatty.png";
 import { FontAwesome } from '@expo/vector-icons';
+
+const windowWidth = Dimensions.get('window').width;
 
 export function Profile({ navigation }) {
     function Header() {
         return (
             <View style={styles.header_style}>
-                <Image source={logo} style={styles.logo}/>
                 {/* working on adding settings icon */}
+                <Image source = {require("../assets/Icons/chatty.png")} style={styles.logo}/>
             </View>
         );
     }
@@ -64,7 +67,7 @@ const styles = StyleSheet.create({
     },
 
     name: {
-        color: black,
+        color: 'black',
         fontSize: 25,
     },
 
@@ -74,7 +77,7 @@ const styles = StyleSheet.create({
     },
 
     fillins: {
-        color: black,
+        color: 'black',
         fontSize: 14,
     },
 
