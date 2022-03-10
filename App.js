@@ -14,7 +14,7 @@ import {
 import { useState, useEffect } from "react";
 import Colors from "./Themes/colors";
 
-import {ChatNavigator, MatchNavigator, ForumNavigator, ProfileNavigator } from './CustomNavigation'
+import {ChatNavigator, MatchNavigator, ForumNavigator, NotifNavigator, ProfileNavigator } from './CustomNavigation'
 import { MaterialCommunityIcons, MaterialIcons, Ionicons, FontAwesome } from '@expo/vector-icons';
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -46,9 +46,9 @@ export default function App() {
             component={ChatNavigator}
             options={{
               tabBarIcon: ({ color }) => (
-                <Ionicons name="chatbubble-ellipses" size={20} color={color} />
+                <Ionicons name="chatbubble-ellipses" size={24} color={color} />
               ),
-              title: 'Chat',
+              title: '',
             }}
           />
           <Tab.Screen
@@ -56,9 +56,9 @@ export default function App() {
             component={MatchNavigator}
             options={{
               tabBarIcon: ({ color }) => (
-                <MaterialCommunityIcons name="account-search" size={20} color={color} />
+                <MaterialCommunityIcons name="account-search" size={24} color={color} />
               ),
-              title: 'Match',
+              title: '',
             }}
           />
           <Tab.Screen
@@ -67,9 +67,20 @@ export default function App() {
             headerShown={false}
             options={{
               tabBarIcon: ({ color }) => (
-                <MaterialIcons name="people-alt" size={20} color={color} />
+                <MaterialCommunityIcons name="book-open-variant" size={24} color={color} />
               ),
-              title: 'Learn',
+              title: '',
+            }}
+          />
+          <Tab.Screen
+            name="NotifNav"
+            component={NotifNavigator}
+            headerShown={false}
+            options={{
+              tabBarIcon: ({ color }) => (
+                <MaterialIcons name="notifications" size={24} color={color} />
+              ),
+              title: '',
             }}
           />
           <Tab.Screen
@@ -77,9 +88,9 @@ export default function App() {
             component={ProfileNavigator}
             options={{
               tabBarIcon: ({ color }) => (
-                <FontAwesome name="user-circle" size={20} color={color} />
+                <FontAwesome name="user-circle" size={24} color={color} />
               ),
-              title: 'Profile',
+              title: '',
             }}
           />
         </Tab.Navigator>
