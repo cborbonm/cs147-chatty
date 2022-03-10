@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
     StyleSheet,
     Text,
@@ -63,7 +63,7 @@ function pushComment(comments, com, i) {
 export function Question({ route, navigation }) {
 
     // hide bottom nav
-    React.useEffect(() => {
+    useEffect(() => {
         navigation.getParent()?.setOptions({ tabBarStyle: { display: "none" }});
         return () => navigation.getParent()?.setOptions({ tabBarStyle: styles.bottom_action_goback });
     }, [navigation]);
@@ -71,9 +71,9 @@ export function Question({ route, navigation }) {
 
     const params = route.params;
     const question = params.question;
-    const [text, setText] = React.useState("");
-    const [viewComments, setComments] = React.useState([]);
-    const scrollRef = React.useRef();
+    const [text, setText] = useState("");
+    const [viewComments, setComments] = useState([]);
+    const scrollRef = useRef();
 
     var tags = [];
 
@@ -157,11 +157,11 @@ export function Question({ route, navigation }) {
                         <Text style={styles.no_comments_text}>
                             No comments yet. Be the first to comment!
                         </Text>
-                        { React.useEffect(() => { setComments([...comments]); }, []) }
+                        { useEffect(() => { setComments([...comments]); }, []) }
                         </View>
                     ):(
                         <View style={styles.comment}>
-                            { React.useEffect(() => { setComments([...comments]); }, []) }
+                            { useEffect(() => { setComments([...comments]); }, []) }
                             { viewComments }
                         </View>
                     )
@@ -193,24 +193,25 @@ export function Question({ route, navigation }) {
                         title="Post"
                         onPress={() => 
                             {
+                                let newComment = {
+                                    user: { 
+                                        name:'me',
+                                        native: {
+                                            language:'en',
+                                            location: 'US',
+                                        },
+                                    },
+                                    timestamp: 'Just now',
+                                    comment: text,
+                                };
                                 pushComment(
                                     comments, 
-                                    {
-                                        user: { 
-                                            name:'me',
-                                            native: {
-                                                language:'en',
-                                                location: 'US',
-                                            },
-                                        },
-                                        timestamp: 'Just now',
-                                        comment: text,
-                                    }, 
+                                    newComment, 
                                     comments.length
                                 );
-                                console.log(comments.length);
                                 setText('');
                                 setComments([...comments]);
+                                route.params.addComment(newComment, route.params.index);
                             }
                         }
                         disabled={text.length==0}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     StyleSheet,
     Text,
@@ -21,8 +21,8 @@ export default function NewQuestion({ route, navigation }) {
     let prompt = params.prompt;
     let language = params.language;
 
-    const [text, setText] = React.useState("");
-    const [selectedTags, setSelectedTags] = React.useState([]);
+    const [text, setText] = useState("");
+    const [selectedTags, setSelectedTags] = useState([]);
 
     var disabled = !language || !text;
 
@@ -78,14 +78,7 @@ export default function NewQuestion({ route, navigation }) {
                 <Text style={styles.prompt}>{prompt}</Text>
                 <TextInput
                     style={styles.input}
-                    onChangeText={ 
-                        setText
-                        // (e) => {
-                        // if (e.stopPropagation) e.stopPropagation();
-                        // console.log(e);
-                        // setText(e);
-                    // }
-                    }
+                    onChangeText={ setText }
                     value={text}
                     placeholder="Type your question here"
                     placeholderTextColor={Colors.lighter_purplegrey}

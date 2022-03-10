@@ -1,4 +1,4 @@
-export const questions = [
+export const QUESTIONS = [
     {
         key: 1,
         user: { 

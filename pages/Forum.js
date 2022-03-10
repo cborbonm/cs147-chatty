@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     StyleSheet,
     Text,
@@ -13,58 +13,73 @@ import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 
 import getLanguageName from "../utils/getLanguageName";
 
-import { questions } from '../data/questions';
+import { QUESTIONS } from '../data/questions';
 import { db } from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
 
 const windowWidth = Dimensions.get('window').width;
 
-export function ForumQuestion({ question, navigation}) {
-    return (
-        <Pressable // press whole row
-            onPress={ () => navigation.navigate("Question", { question: question }) } 
-            style={({ pressed }) => [
-            {
-              backgroundColor: pressed ? Colors.pressed_background : Colors.background,
-            },
-            styles.post
-            ]}
-        >
-            <View style={styles.left}>
-                <FontAwesome name="user-circle" size={24} color={Colors.chatty} />
-            </View>
-            <View style={styles.right}>
-                <View style={styles.name_timestamp_container}>
-                    <View flexDirection="row" alignItems="baseline">
-                        <Text style={styles.name}>{question.user.name} · </Text>
+export function Forum({ navigation }) {
+
+    const [questions, setQuestions] = useState(QUESTIONS);
+    
+    const addQuestion = (newQuestion) => {
+        setQuestions([newQuestion, ...questions]);
+    }
+
+    const addComment = (newComment, index) => {
+        let questionsCopy = questions;
+        let qAtIndex = questionsCopy[index];
+        let commentsCopy = qAtIndex.comments;
+        commentsCopy.push(newComment);
+        qAtIndex.comments = commentsCopy;
+        questionsCopy.splice(index, 1, qAtIndex)
+        setQuestions([...questionsCopy]);
+    }
+
+    function ForumQuestion({ question, index, navigation}) {
+        return (
+            <Pressable // press whole row
+                onPress={ () => navigation.navigate("Question", { question: question, index: index, addComment: addComment, }) } 
+                style={({ pressed }) => [
+                {
+                backgroundColor: pressed ? Colors.pressed_background : Colors.background,
+                },
+                styles.post
+                ]}
+            >
+                <View style={styles.left}>
+                    <FontAwesome name="user-circle" size={24} color={Colors.chatty} />
+                </View>
+                <View style={styles.right}>
+                    <View style={styles.name_timestamp_container}>
+                        <View flexDirection="row" alignItems="baseline">
+                            <Text style={styles.name}>{question.user.name} · </Text>
+                            <Text style={{color: Colors.lighter_purplegrey}}>
+                                {getLanguageName(question.user.native.language)}
+                                {question.user.native.location.length > 0 ? " ("+question.user.native.location+")" : ''}
+                            </Text>
+                        </View>
+                        <Text style={{color: Colors.purplegrey}}>{question.timestamp}</Text>
+                    </View>
+                    
+                    <View marginBottom={10}> 
                         <Text style={{color: Colors.lighter_purplegrey}}>
-                            {getLanguageName(question.user.native.language)}
-                            {question.user.native.location.length > 0 ? " ("+question.user.native.location+")" : ''}
+                            Question about: {getLanguageName(question.user.learning.language)}
+                            {question.user.learning.location.length > 0 ? " ("+question.user.learning.location+")" : ''}
                         </Text>
                     </View>
-                    <Text style={{color: Colors.purplegrey}}>{question.timestamp}</Text>
-                </View>
-                
-                <View marginBottom={10}> 
-                    <Text style={{color: Colors.lighter_purplegrey}}>
-                        Question about: {getLanguageName(question.user.learning.language)}
-                        {question.user.learning.location.length > 0 ? " ("+question.user.learning.location+")" : ''}
-                    </Text>
-                </View>
 
-                <Text style={{fontSize: 16}} numberOfLines={3}>{question.question}</Text>
-                <View style={styles.comments_container}>
-                    <MaterialCommunityIcons name="comment" size={16} color={question.comments.length == 0 ? Colors.accent : Colors.lavender} />
-                    <Text style={styles.num_comments}>{question.comments.length}</Text>
+                    <Text style={{fontSize: 16}} numberOfLines={3}>{question.question}</Text>
+                    <View style={styles.comments_container}>
+                        <MaterialCommunityIcons name="comment" size={16} color={question.comments.length == 0 ? Colors.accent : Colors.lavender} />
+                        <Text style={styles.num_comments}>{question.comments.length}</Text>
+                    </View>
                 </View>
-            </View>
-        </Pressable>
-    );
-}
-
-export function Forum({ navigation }) {
-    const [question, setQuestion] = React.useState(questions);
-
+            </Pressable>
+        );
+    }
+    
     return (
         <View style={styles.container}>
             <View style={styles.sort_by}>
@@ -73,9 +88,10 @@ export function Forum({ navigation }) {
             </View>
             <FlatList
                 data={questions}
-                renderItem={({item}) => 
+                renderItem={({item, index}) => 
                     <ForumQuestion 
                         question={item}
+                        index={index}
                         navigation={navigation}
                     />
                 }
