@@ -6,16 +6,20 @@ import {
     Dimensions,
     Pressable,
     FlatList,
+    Image,
+    SafeAreaView,
 } from 'react-native';
 // import ForumQuestion from './ForumQuestion';
 import Colors from "../Themes/colors";
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 
+// import { SafeAreaView } from "react-native-safe-area-context";
+
 import getLanguageName from "../utils/getLanguageName";
 
 import { QUESTIONS } from '../data/questions';
-import { db } from "../firebase";
-import { doc, getDoc } from "firebase/firestore";
+
+import logo from "../assets/Icons/chatty.png";
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -25,6 +29,7 @@ export function Forum({ navigation }) {
     
     const addQuestion = (newQuestion) => {
         setQuestions([newQuestion, ...questions]);
+        console.log("questions.indexOf(newQuestion)", questions.indexOf(newQuestion));
     }
 
     const addComment = (newComment, index) => {
@@ -35,6 +40,25 @@ export function Forum({ navigation }) {
         qAtIndex.comments = commentsCopy;
         questionsCopy.splice(index, 1, qAtIndex)
         setQuestions([...questionsCopy]);
+    }
+
+    function Header() {
+        return (
+            <View style={styles.header_style}>
+                <Image source={logo} style={styles.logo}/>
+                <Pressable
+                    onPress={ () => {
+                        navigation.navigate("NewQuestionPromptList", {addQuestion: addQuestion, addComment: addComment});
+                        }
+                    }
+                    style={({ pressed }) => [
+                        { opacity: pressed ? 0.5 : 1.0 }
+                    ]}
+                >
+                    <MaterialCommunityIcons name="square-edit-outline" size={36} color={Colors.accent}/>
+                </Pressable>
+            </View>
+        );
     }
 
     function ForumQuestion({ question, index, navigation}) {
@@ -81,23 +105,26 @@ export function Forum({ navigation }) {
     }
     
     return (
-        <View style={styles.container}>
-            <View style={styles.sort_by}>
-                <Text style={{fontSize: 14}}>Newest</Text>
-                    <MaterialCommunityIcons name="menu-down" size={24} color={Colors.chatty} />
+        <SafeAreaView style={styles.container}>
+            <Header />
+            <View style={styles.container}>
+                <View style={styles.sort_by}>
+                    <Text style={{fontSize: 14}}>Newest</Text>
+                        <MaterialCommunityIcons name="menu-down" size={24} color={Colors.chatty} />
+                </View>
+                <FlatList
+                    data={questions}
+                    renderItem={({item, index}) => 
+                        <ForumQuestion 
+                            question={item}
+                            index={index}
+                            navigation={navigation}
+                        />
+                    }
+                    keyExtractor={(item) => item.user.name + item.question}
+                />
             </View>
-            <FlatList
-                data={questions}
-                renderItem={({item, index}) => 
-                    <ForumQuestion 
-                        question={item}
-                        index={index}
-                        navigation={navigation}
-                    />
-                }
-                keyExtractor={(item) => item.key}
-            />
-        </View>
+        </SafeAreaView>
     );
 }
   
@@ -152,5 +179,24 @@ const styles = StyleSheet.create({
     num_comments: {
         paddingLeft: 5,
         fontSize: 16,
-    }
+    },
+
+    //header
+    header_style: {
+        flexDirection: 'row',
+        alignItems: 'baseline',
+        justifyContent: 'space-between',
+        width: windowWidth,
+        height: 45,
+        borderBottomWidth: 1,
+        borderColor: Colors.lavender,
+        backgroundColor: Colors.background,
+        paddingHorizontal: 10,
+        paddingTop: 4,
+    },
+    logo: {
+        height: 36,
+        width: undefined,
+        aspectRatio: 364/98,
+    },
 });

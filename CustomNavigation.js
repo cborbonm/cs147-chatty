@@ -157,30 +157,30 @@ export {MatchNavigator}; // Stack-Navigator for Match Tab
           {/* pass props: https://stackoverflow.com/questions/60439210/how-to-pass-props-to-screen-component-with-a-tab-navigator */}
           <Stack.Screen name="Forum" 
             component={Forum} 
-            options= {({ navigation }) => ({
-              title: '',
-              headerLeft: () => <Image source={logo} style={styles.logo}/>,
-              headerRight: () =>
-                <Pressable
-                  onPress={ () => {
-                    navigation.navigate("NewQuestionPromptList");
-                    }
-                  }
-                  style={({ pressed }) => [
-                    { opacity: pressed ? 0.5 : 1.0 }
-                  ]}
-                >
-                  <MaterialCommunityIcons name="square-edit-outline" size={36} color={Colors.accent}/>
-                </Pressable>
-              ,
-              headerLeftContainerStyle: {
-                paddingLeft: 10,
-              },
-              headerRightContainerStyle: {
-                paddingRight: 10,
-              },
-            })
-          } 
+            options={{headerShown: false}}
+            // options= {({ navigation }) => ({
+            //   title: '',
+            //   headerLeft: () => <Image source={logo} style={styles.logo}/>,
+            //   headerRight: () =>
+            //     <Pressable
+            //       onPress={ () => {
+            //         navigation.navigate("NewQuestionPromptList");
+            //         }
+            //       }
+            //       style={({ pressed }) => [
+            //         { opacity: pressed ? 0.5 : 1.0 }
+            //       ]}
+            //     >
+            //       <MaterialCommunityIcons name="square-edit-outline" size={36} color={Colors.accent}/>
+            //     </Pressable>
+            //   ,
+            //   headerLeftContainerStyle: {
+            //     paddingLeft: 10,
+            //   },
+            //   headerRightContainerStyle: {
+            //     paddingRight: 10,
+            //   },
+            // })} 
           />
           <Stack.Screen name="NewQuestionPromptList" component={NewQuestionPromptList} options={{ title: 'New Question' }}/>
           <Stack.Screen name="NewQuestion" 

@@ -64,6 +64,7 @@ export default function App() {
           <Tab.Screen
             name="LearnNav"
             component={ForumNavigator}
+            headerShown={false}
             options={{
               tabBarIcon: ({ color }) => (
                 <MaterialIcons name="people-alt" size={20} color={color} />

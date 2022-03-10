@@ -8,53 +8,53 @@ import {
 import Colors from "../Themes/colors";
 import getLanguageName from "../utils/getLanguageName";
 
-function LanguageOption( {navigation, language, prompt} ) {
-    return (
-        <Pressable // press whole row
-            onPress={ () => navigation.navigate("NewQuestion", {language: language, prompt: prompt}) } 
-            style={({ pressed }) => [
-            {
-                backgroundColor: pressed ? Colors.pressed_background : "white",
-            },
-            styles.language_container
-        ]}>
-            <Text style={styles.language}>{getLanguageName(language)}</Text>
-        </Pressable>
-    );
-}
-
 export default function LanguageDropDown({ route, navigation }) {
-    let language = route.params.language;
-    const prompt = route.params.prompt;
+
+    const { prompt, addQuestion, addComment } = route.params;
+    
+    function LanguageOption( { language } ) {
+        return (
+            <Pressable // press whole row
+                onPress={ () => navigation.navigate("NewQuestion", {language: language, prompt: prompt, addQuestion: addQuestion, addComment: addComment}) } 
+                style={({ pressed }) => [
+                {
+                    backgroundColor: pressed ? Colors.pressed_background : "white",
+                },
+                styles.language_container
+            ]}>
+                <Text style={styles.language}>{getLanguageName(language)}</Text>
+            </Pressable>
+        );
+    }
 
     return (
         <View style={styles.container}>
         <View style={styles.languagesDiv}>
-            <LanguageOption navigation={navigation} language={"ar"} prompt={prompt}/>
+            <LanguageOption language={"ar"} />
             <View style={styles.divider}/>
-            <LanguageOption navigation={navigation} language={"zh"} prompt={prompt}/>
+            <LanguageOption language={"zh"} />
             <View style={styles.divider}/>
-            <LanguageOption navigation={navigation} language={"nl"} prompt={prompt}/>
+            <LanguageOption language={"nl"} />
             <View style={styles.divider}/>
-            <LanguageOption navigation={navigation} language={"en"} prompt={prompt}/>
+            <LanguageOption language={"en"} />
             <View style={styles.divider}/>
-            <LanguageOption navigation={navigation} language={"fr"} prompt={prompt}/>
+            <LanguageOption language={"fr"} />
             <View style={styles.divider}/>
-            <LanguageOption navigation={navigation} language={"de"} prompt={prompt}/>
+            <LanguageOption language={"de"} />
             <View style={styles.divider}/>
-            <LanguageOption navigation={navigation} language={"it"} prompt={prompt}/>
+            <LanguageOption language={"it"} />
             <View style={styles.divider}/>
-            <LanguageOption navigation={navigation} language={"ja"} prompt={prompt}/>
+            <LanguageOption language={"ja"} />
             <View style={styles.divider}/>
-            <LanguageOption navigation={navigation} language={"nb"} prompt={prompt}/>
+            <LanguageOption language={"nb"} />
             <View style={styles.divider}/>
-            <LanguageOption navigation={navigation} language={"pt"} prompt={prompt}/>
+            <LanguageOption language={"pt"} />
             <View style={styles.divider}/>
-            <LanguageOption navigation={navigation} language={"ru"} prompt={prompt}/>
+            <LanguageOption language={"ru"} />
             <View style={styles.divider}/>
-            <LanguageOption navigation={navigation} language={"es"} prompt={prompt}/>
+            <LanguageOption language={"es"} />
             <View style={styles.divider}/>
-            <LanguageOption navigation={navigation} language={"tr"} prompt={prompt}/>
+            <LanguageOption language={"tr"} />
         </View>
         </View>
     )

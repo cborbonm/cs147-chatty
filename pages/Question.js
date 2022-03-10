@@ -69,8 +69,8 @@ export function Question({ route, navigation }) {
     }, [navigation]);
 
 
-    const params = route.params;
-    const question = params.question;
+    const { question, index, addComment } = route.params;
+
     const [text, setText] = useState("");
     const [viewComments, setComments] = useState([]);
     const scrollRef = useRef();
@@ -167,7 +167,8 @@ export function Question({ route, navigation }) {
                     )
                 }
             </ScrollView>
-
+            
+            { index > -1 ? (
             <KeyboardAvoidingView 
                 behavior={Platform.OS == "ios" ? "position" : "height"}
                 style={{ flex: 1, justifyContent: 'flex-end', }}
@@ -211,9 +212,10 @@ export function Question({ route, navigation }) {
                                 );
                                 setText('');
                                 setComments([...comments]);
-                                route.params.addComment(newComment, route.params.index);
+                                addComment(newComment, index);
                             }
                         }
+                        color={Colors.accent}
                         disabled={text.length==0}
                     />
                     </View>
@@ -222,6 +224,9 @@ export function Question({ route, navigation }) {
             
             </SafeAreaView>
             </KeyboardAvoidingView>
+            ):(
+                <></> // newly posted question; disable adding comments
+            )}
         </View>
     );
 }

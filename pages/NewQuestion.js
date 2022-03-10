@@ -17,9 +17,7 @@ import getLanguageName from "../utils/getLanguageName";
 const windowWidth = Dimensions.get('window').width;
 
 export default function NewQuestion({ route, navigation }) {
-    const params = route.params;
-    let prompt = params.prompt;
-    let language = params.language;
+    const { prompt, language, addQuestion, addComment } = route.params;
 
     const [text, setText] = useState("");
     const [selectedTags, setSelectedTags] = useState([]);
@@ -62,7 +60,7 @@ export default function NewQuestion({ route, navigation }) {
                 <Text style={styles.text}> This question is about: </Text>
                 <Pressable 
                     onPress={ () => navigation.navigate("LanguageDropDown", {
-                        prompt: prompt } ) } 
+                        prompt: prompt, addQuestion: addQuestion, addComment: addComment } ) } 
                     style={({ pressed }) => [
                         {
                             backgroundColor: pressed ? Colors.pressed_background : "white",
@@ -105,8 +103,8 @@ export default function NewQuestion({ route, navigation }) {
 
             {/* submit button */}
             <Pressable 
-                onPress={ () => navigation.navigate("QuestionPosted", { 
-                    question: {
+                onPress={ () => {
+                    let newQuestion = {
                         user: { 
                             name:'me',
                             native: {
@@ -124,8 +122,17 @@ export default function NewQuestion({ route, navigation }) {
                         tags: selectedTags,
                         comments: [
                         ],
-                    } 
-                }) } 
+                    };
+                    addQuestion(newQuestion);
+                    navigation.navigate("QuestionPosted", { 
+                        question: newQuestion, 
+                        index: -1, // disabled commenting
+                        // problematic if 0. if you comment on the new question before going back home, 
+                        // new question doesn't get posted at all, and instead comments on the last newest question.
+                        addComment: addComment 
+                    });
+                }
+                } 
                 disabled={disabled} // can only submit after filling out both language and text fields
                 style={({ pressed }) => [
                     { opacity: pressed ? 0.5 : (disabled ? 0.5 : 1.0) }, styles.submitButton

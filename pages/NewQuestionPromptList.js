@@ -11,56 +11,58 @@ import {
 from "react-native";
 import Colors from "../Themes/colors";
 
-function NewQuestionPrompt( {navigation, prompt} ) {
-  return (
-      <Pressable // press whole row
-          onPress={ () => navigation.navigate("NewQuestion", { prompt: prompt }) } 
-          style={({ pressed }) => [
-          {
-              backgroundColor: pressed ? Colors.pressed_background : "white",
-          },
-          styles.question_container
-      ]}>
-          <Text style={styles.question}>{prompt}</Text>
-      </Pressable>
-  );
-}
-
-export default function NewQuestionPromptList( {navigation} ) {
+export default function NewQuestionPromptList( { route, navigation} ) {
   // hide bottom nav
   React.useEffect(() => {
     navigation.getParent()?.setOptions({ tabBarStyle: { display: "none" }});
     return () => navigation.getParent()?.setOptions({ tabBarStyle: styles.bottom_action_goback });
-}, [navigation]);
+  }, [navigation]);
+
+  const { addQuestion, addComment } = route.params;
+  
+  function NewQuestionPrompt( { prompt} ) {
+    return (
+        <Pressable // press whole row
+            onPress={ () => navigation.navigate("NewQuestion", { prompt: prompt, addQuestion: addQuestion, addComment: addComment }) } 
+            style={({ pressed }) => [
+            {
+                backgroundColor: pressed ? Colors.pressed_background : "white",
+            },
+            styles.question_container
+        ]}>
+            <Text style={styles.question}>{prompt}</Text>
+        </Pressable>
+    );
+  } 
 
   return (
     <View style={styles.container}>
         <View style={styles.subContainer}> 
           <Text style={styles.questionTopic}>Language</Text>
           <View style={styles.questionsDiv}>
-            <NewQuestionPrompt prompt="How do you say this?" navigation={navigation}/>
+            <NewQuestionPrompt prompt="How do you say this?" />
             <View style={styles.divider}/>
-            <NewQuestionPrompt prompt="What does this mean?" navigation={navigation}/>
+            <NewQuestionPrompt prompt="What does this mean?" />
             <View style={styles.divider}/>
-            <NewQuestionPrompt prompt="Does this sound natural?" navigation={navigation}/>
+            <NewQuestionPrompt prompt="Does this sound natural?" />
             <View style={styles.divider}/>
-            <NewQuestionPrompt prompt="What's the difference between...?" navigation={navigation}/>
+            <NewQuestionPrompt prompt="What's the difference between...?" />
             <View style={styles.divider}/>
-            <NewQuestionPrompt prompt="Can you use ... in a sentence?" navigation={navigation}/>
+            <NewQuestionPrompt prompt="Can you use ... in a sentence?" />
           </View>
           <Text style={styles.questionTopic}>Speaking</Text>
           <View style={styles.questionsDiv}>
-            <NewQuestionPrompt prompt="How's my pronounciation?" navigation={navigation}/>
+            <NewQuestionPrompt prompt="How's my pronounciation?" />
             <View style={styles.divider}/>
-            <NewQuestionPrompt prompt="How do you pronounce...?" navigation={navigation}/>
+            <NewQuestionPrompt prompt="How do you pronounce...?" />
           </View>
           <Text style={styles.questionTopic}>Culture</Text>
           <View style={styles.questionsDiv}>
-            <NewQuestionPrompt prompt="What should I say when...?" navigation={navigation}/>
+            <NewQuestionPrompt prompt="What should I say when...?" />
             <View style={styles.divider}/>
-            <NewQuestionPrompt prompt="What should I do when...?" navigation={navigation}/>
+            <NewQuestionPrompt prompt="What should I do when...?" />
             <View style={styles.divider}/>
-            <NewQuestionPrompt prompt="Is it acceptable to do this?" navigation={navigation}/>
+            <NewQuestionPrompt prompt="Is it acceptable to do this?" />
           </View>
         </View>
 
