@@ -20,6 +20,8 @@ import { doc, getDoc } from "firebase/firestore";
 
 import getLanguageName from '../utils/getLanguageName';
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 const windowWidth = Dimensions.get('window').width;
 
 function translateLevel(level) {

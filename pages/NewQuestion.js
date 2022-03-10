@@ -22,36 +22,35 @@ export default function NewQuestion({ route, navigation }) {
     let language = params.language;
 
     const [text, setText] = React.useState("");
-    var tags = [];
+    const [selectedTags, setSelectedTags] = React.useState([]);
 
     var disabled = !language || !text;
 
-    function Tag( {tag} ) {
-        const [selected, setSelected] = React.useState(false);
+    function Tag( {text} ) {
         return (
             <Pressable 
                 style={[
-                    {backgroundColor: selected ? Colors.lighter_purple : "white"},
+                    {backgroundColor: selectedTags.includes(text) ? Colors.lighter_purple : "white"},
                     styles.tag
                 ]}
                 onPress={ () => {
-                    setSelected(!selected);
-                    if (!selected) { // unsure why it has to be !selected, but it works
-                        tags.push(tag);
+                    if (!selectedTags.includes(text)) {
+                        setSelectedTags([...selectedTags, text]);
                     } else {
-                        const index = tags.indexOf(tag);
-                        tags.splice(index, 1); // remove one tag in the array
+                        const index = selectedTags.indexOf(text);
+                        let selectedTagsCopy = selectedTags;
+                        selectedTagsCopy.splice(index, 1);
+                        setSelectedTags([...selectedTags]);
                     }
-                    console.log(tags);
                 }} 
             >
                 <Text 
                     style={[
-                        {color: selected ? "white" : Colors.purplegrey},
+                        {color: selectedTags.includes(text) ? "white" : Colors.purplegrey},
                         styles.tagText
                     ]}
                 >
-                        {tag}
+                        {text}
                 </Text>
             </Pressable>
         );
@@ -79,7 +78,14 @@ export default function NewQuestion({ route, navigation }) {
                 <Text style={styles.prompt}>{prompt}</Text>
                 <TextInput
                     style={styles.input}
-                    onChangeText={setText}
+                    onChangeText={ 
+                        setText
+                        // (e) => {
+                        // if (e.stopPropagation) e.stopPropagation();
+                        // console.log(e);
+                        // setText(e);
+                    // }
+                    }
                     value={text}
                     placeholder="Type your question here"
                     placeholderTextColor={Colors.lighter_purplegrey}
@@ -93,15 +99,15 @@ export default function NewQuestion({ route, navigation }) {
                 <Text style={styles.addTags}>Add tags (optional)</Text>
             </View>
             <View style={styles.tagDiv}>
-                <Tag tag="#casual" />
-                <Tag tag="#stranger" />
-                <Tag tag="#friends" />
-                <Tag tag="#slang" />
-                <Tag tag="#online" />
-                <Tag tag="#acquaintances" />
-                <Tag tag="#business" />
-                <Tag tag="#formal" />
-                <Tag tag="#school" />
+                <Tag text="#casual" />
+                <Tag text="#stranger" />
+                <Tag text="#friends" />
+                <Tag text="#slang" />
+                <Tag text="#online" />
+                <Tag text="#acquaintances" />
+                <Tag text="#business" />
+                <Tag text="#formal" />
+                <Tag text="#school" />
             </View>
 
             {/* submit button */}
@@ -122,7 +128,7 @@ export default function NewQuestion({ route, navigation }) {
                         },
                         timestamp: 'Just now',
                         question: text,
-                        tags: tags,
+                        tags: selectedTags,
                         comments: [
                         ],
                     } 

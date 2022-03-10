@@ -1,3 +1,4 @@
+import React from "react";
 import {
     StyleSheet,
     Text,
@@ -62,6 +63,8 @@ export function ForumQuestion({ question, navigation}) {
 }
 
 export function Forum({ navigation }) {
+    const [question, setQuestion] = React.useState(questions);
+
     return (
         <View style={styles.container}>
             <View style={styles.sort_by}>
