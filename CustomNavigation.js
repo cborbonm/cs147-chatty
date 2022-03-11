@@ -25,6 +25,8 @@ import Match from "./pages/Match";
 import QuickMatchScreen from "./pages/QuickMatchScreen";
 import QuickMatchVideo from "./pages/QuickMatchVideo";
 import QuickMatchNoVideo from "./pages/QuickMatchNoVideo";
+import QuickMatchedVideo from "./pages/QuickMatchedVideo";
+import QuickMatchedNoVideo from "./pages/QuickMatchedNoVideo";
 import FriendMatchScreen from "./pages/FriendMatchScreen";
 import FriendMatched from "./pages/FriendMatched";
 import CallEnded from "./pages/CallEnded";
@@ -139,7 +141,19 @@ const MatchNavigator = () => {
           height: 100,
         },
       }}>
-      <Stack.Screen name="FriendMatched" 
+        <Stack.Screen name="QuickMatchedVideo" 
+          component={QuickMatchedVideo} 
+          options= {({ navigation }) => ({
+            title: 'Quick Match',
+          })} 
+        />
+        <Stack.Screen name="QuickMatchedNoVideo" 
+          component={QuickMatchedNoVideo} 
+          options= {({ navigation }) => ({
+            title: 'Quick Match',
+          })} 
+        />
+        <Stack.Screen name="FriendMatched" 
           component={FriendMatched} 
           options= {({ navigation }) => ({
             title: 'Find Friend',
