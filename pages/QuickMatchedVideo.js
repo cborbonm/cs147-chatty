@@ -17,7 +17,7 @@ import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 
 const windowWidth = Dimensions.get('window').width;
 
-export default function FriendMatched({ route, navigation }) {
+export default function QuickMatchedVideo({ route, navigation }) {
     const [modalVisible, setModalVisible] = useState(false);
 
     // hide bottom nav
@@ -42,15 +42,15 @@ export default function FriendMatched({ route, navigation }) {
                 <Text style={styles.modalText}>You have a match!</Text>
             </View>
             <FontAwesome name="user-circle" size={120} color={Colors.lighter_purple} />
-            <Text style={styles.name}>Anna</Text>
+            <Text style={styles.name}>Delali</Text>
             <View style={styles.textRow}>
                 <Text>Learning:</Text>
-                <Text>English (American)</Text>
+                <Text>French (Parisian)</Text>
             </View>
             <View style={styles.bar}><View style={styles.progressBar}></View></View>
             <View style={styles.textRow}>
                 <Text>Native:</Text>
-                <Text>Spanish (Mexican)</Text>
+                <Text>English (American)</Text>
             </View>
             <View style={styles.bar2}></View>
             <View style={styles.buttons}>
@@ -65,9 +65,8 @@ export default function FriendMatched({ route, navigation }) {
                 style={[styles.button, styles.buttonClose]}
                 onPress={() => {
                     setModalVisible(!modalVisible);
-                    navigation.navigate("Match");
-                    navigation.navigate("Chat");}}>
-                <Text style={styles.textStyle}>START CHATTING</Text>
+                    navigation.navigate("QuickMatchVideo");}}>
+                <Text style={styles.textStyle}>START CALL</Text>
                 </Pressable>
             </View>
           </View>

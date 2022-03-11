@@ -51,9 +51,9 @@ export default function QuickMatchScreen({ route, navigation }) {
             </View>
             <TouchableOpacity style={styles.quickmatch_button} onPress={() => {
                 if (isEnabled) {
-                    navigation.navigate("QuickMatchVideo");
+                    navigation.navigate("QuickMatchedVideo");
                 } else {
-                    navigation.navigate("QuickMatchNoVideo");
+                    navigation.navigate("QuickMatchedNoVideo");
                 }
                 }}>
                 <Text style={styles.button_text}>FIND MATCH</Text>

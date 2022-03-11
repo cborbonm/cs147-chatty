@@ -20,9 +20,9 @@ export function Match({ navigation }) {
                 <Text style={styles.text}>Quick Match</Text>
             </View>
             <View style={styles.match_container}>
-            <Pressable style={styles.friendmatch_icon_container}>
+            <Pressable style={styles.friendmatch_icon_container} onPress={() => {navigation.navigate("FriendMatchScreen")}}>
                 <MaterialIcons name="people-outline" size={90} color="white" />
-            </Pressable>
+            </Pressable >
                 <Text style={styles.text}>New Friend</Text>
             </View>
         </View>

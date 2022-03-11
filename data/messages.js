@@ -5,7 +5,7 @@ export const MESSAGES = [
     {  
         key : 1, 
         chat: CHAT2,
-        chatWith: 'John',
+        chatWith: 'Anna',
         avatar: require('../assets/Photos/john.jpeg'),
     },
     {

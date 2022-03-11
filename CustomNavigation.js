@@ -25,6 +25,8 @@ import Match from "./pages/Match";
 import QuickMatchScreen from "./pages/QuickMatchScreen";
 import QuickMatchVideo from "./pages/QuickMatchVideo";
 import QuickMatchNoVideo from "./pages/QuickMatchNoVideo";
+import QuickMatchedVideo from "./pages/QuickMatchedVideo";
+import QuickMatchedNoVideo from "./pages/QuickMatchedNoVideo";
 import FriendMatchScreen from "./pages/FriendMatchScreen";
 import FriendMatched from "./pages/FriendMatched";
 import CallEnded from "./pages/CallEnded";
@@ -130,19 +132,28 @@ const MatchNavigator = () => {
         />
       </Stack.Group>
       <Stack.Group screenOptions={{ 
-        headerBackTitle: null, headerStyle: {
+        headerBackTitle: null, headerStyle: styles.headerStyle, 
+        headerTintColor: Colors.accent, 
+        headerTitleStyle: styles.headerTitleStyle,
+        headerStyle: {
           backgroundColor: Colors.lighest_purplegrey,
           opacity: 0.75,
-          borderBottomColor: Colors.lighter_purplegrey,
-          borderBottomWidth: 1,
-        }, 
-        headerTintColor: Colors.accent, 
-        headerTitleStyle: {
-          fontWeight: '400', 
-          color: Colors.chatty, 
+          height: 100,
         },
       }}>
-      <Stack.Screen name="FriendMatched" 
+        <Stack.Screen name="QuickMatchedVideo" 
+          component={QuickMatchedVideo} 
+          options= {({ navigation }) => ({
+            title: 'Quick Match',
+          })} 
+        />
+        <Stack.Screen name="QuickMatchedNoVideo" 
+          component={QuickMatchedNoVideo} 
+          options= {({ navigation }) => ({
+            title: 'Quick Match',
+          })} 
+        />
+        <Stack.Screen name="FriendMatched" 
           component={FriendMatched} 
           options= {({ navigation }) => ({
             title: 'Find Friend',
