@@ -130,16 +130,13 @@ const MatchNavigator = () => {
         />
       </Stack.Group>
       <Stack.Group screenOptions={{ 
-        headerBackTitle: null, headerStyle: {
+        headerBackTitle: null, headerStyle: styles.headerStyle, 
+        headerTintColor: Colors.accent, 
+        headerTitleStyle: styles.headerTitleStyle,
+        headerStyle: {
           backgroundColor: Colors.lighest_purplegrey,
           opacity: 0.75,
-          borderBottomColor: Colors.lighter_purplegrey,
-          borderBottomWidth: 1,
-        }, 
-        headerTintColor: Colors.accent, 
-        headerTitleStyle: {
-          fontWeight: '400', 
-          color: Colors.chatty, 
+          height: 100,
         },
       }}>
       <Stack.Screen name="FriendMatched" 
