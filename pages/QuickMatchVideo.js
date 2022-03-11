@@ -45,6 +45,7 @@ export function QuickMatchVideo({ navigation }) {
         source={require('../data/videochatVideo.mov')}
         resizeMode="contain"
         shouldPlay
+        isLooping
         onPlaybackStatusUpdate={ status => setStatus(() => status) }
       >
       </Video>
