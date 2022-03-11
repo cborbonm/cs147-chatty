@@ -21,6 +21,7 @@ export function QuickMatchVideo({ navigation }) {
   const [type, setType] = useState(Camera.Constants.Type.front);
   // video vars
   const video = React.useRef(null);
+  const [status, setStatus] = React.useState({});
 
   useEffect(() => {
     (async () => {
@@ -43,8 +44,8 @@ export function QuickMatchVideo({ navigation }) {
         style={styles.video}
         source={require('../data/videochatVideo.mov')}
         resizeMode="contain"
-        isLooping
         shouldPlay
+        onPlaybackStatusUpdate={ status => setStatus(() => status) }
       >
       </Video>
       <Camera style={styles.camera} type={type}>

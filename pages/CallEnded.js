@@ -16,8 +16,9 @@ export function CallEnded({ navigation }) {
   return (
     <View style={styles.container}>
       <Text>
-      Call has ended
+      Call has ended!
       </Text>
+      <TouchableOpacity onPress={() => navigation.navigate("Match")}><Text>Go back home!</Text></TouchableOpacity>
     </View>
   );
 }

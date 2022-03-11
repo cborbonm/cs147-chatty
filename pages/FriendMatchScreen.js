@@ -38,7 +38,7 @@ export default function FriendMatchScreen({ route, navigation }) {
             language learning partner!
             </Text>
             <TouchableOpacity style={styles.friendmatch_button} onPress={() => (navigation.navigate("FriendMatched"))}>
-                <Text style={styles.button_text}>Find a Friend</Text>
+                <Text style={styles.button_text}>FIND A FRIEND</Text>
             </TouchableOpacity>
         </View>
     );
@@ -62,12 +62,14 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         backgroundColor: Colors.lighter_purple,
         borderRadius: 40,
-        width: 160,
         height: 38,
         margin: 25,
     },
     button_text: {
-        fontSize: 22,
         color: 'white',
+        paddingVertical: 10,
+        paddingHorizontal: 30,
+        fontSize: 16,
+        fontWeight: '500',
     },
 });
