@@ -24,7 +24,7 @@ export const QUESTIONS = [
     {
         key: 2,
         user: { 
-            name:'Delali',
+            name:'Marguerite',
             native: {
                 language:'fr',
                 location: 'Canada',
@@ -249,7 +249,7 @@ coworkers and friends. But one of bad thing is that I\'ve lost a lot of energy.'
                 location: 'US',
                 level: 3,
             },
-            avatar: require('../assets/Photos/logo.png'),
+            avatar: require('../assets/Photos/liz.png'),
         },
         timestamp: '1h',
         question: 'What does "She\'s pretty full of herself" mean?',

@@ -6,7 +6,7 @@ export const CHAT2 = [
         user: {
             _id: 2,
             name: 'Anna',
-            avatar: require('../assets/Photos/john.jpeg'),
+            avatar: require('../assets/Photos/anna.jpeg'),
         },
     },
 ];
