@@ -55,17 +55,18 @@ export function QuickMatchVideo({ navigation }) {
           <TouchableOpacity
             style={styles.button}
             >
-            <Text style={styles.text}> Add Time </Text>
+            <Text style={styles.text}> ADD TIME </Text>
           </TouchableOpacity>
         </View>
         <View style={styles.buttonContainer}>
           <TouchableOpacity
             style={styles.button}
             onPress={() => {
+              navigation.navigate("Match");
               navigation.navigate("CallEnded");
             }}
             >
-            <Text style={styles.text}> End Call </Text>
+            <Text style={styles.text}> END CALL </Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -105,7 +106,7 @@ const styles = StyleSheet.create({
     //alignSelf: 'flex-end',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: Colors.chatty,
+    backgroundColor: Colors.lighter_purple,
     marginBottom: 20,
     borderRadius: 40,
     height: 50,

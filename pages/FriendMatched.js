@@ -67,7 +67,7 @@ export default function FriendMatched({ route, navigation }) {
                     setModalVisible(!modalVisible);
                     navigation.navigate("Match");
                     navigation.navigate("Chat");}}>
-                <Text style={styles.textStyle}>START MESSAGING</Text>
+                <Text style={styles.textStyle}>START CHATTING</Text>
                 </Pressable>
             </View>
           </View>

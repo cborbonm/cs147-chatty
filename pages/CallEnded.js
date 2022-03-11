@@ -15,10 +15,12 @@ import { doc, getDoc } from "firebase/firestore";
 export function CallEnded({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text>
-      Call has ended!
+      <Text style={styles.text}>
+      Call has ended! Did you have fun?
       </Text>
-      <TouchableOpacity onPress={() => navigation.navigate("Match")}><Text>Go back home!</Text></TouchableOpacity>
+      <TouchableOpacity style={styles.friendmatch_button} onPress={() => navigation.navigate("Match")}>
+        <Text style={styles.button_text}>GO BACK HOME</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -27,9 +29,33 @@ export default CallEnded;
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: Colors.background,
+    display: "flex",
     flex: 1,
     flexDirection: 'column',
-    height: '100%',
+    alignContent: 'center',
     justifyContent: 'center',
+  },
+  text: {
+    fontSize: 15,
+    margin: 22,
+    color: Colors.purplegrey,
+    alignSelf: 'center',
+  },
+  friendmatch_button: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'center',
+    backgroundColor: Colors.lighter_purple,
+    borderRadius: 40,
+    height: 38,
+    margin: 25,
+  },
+  button_text: {
+    color: 'white',
+    paddingVertical: 10,
+    paddingHorizontal: 30,
+    fontSize: 16,
+    fontWeight: '500',
   },
 });
