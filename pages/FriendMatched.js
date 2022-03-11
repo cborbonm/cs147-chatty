@@ -59,7 +59,7 @@ export default function FriendMatched({ route, navigation }) {
                 onPress={() => {
                     setModalVisible(!modalVisible);
                     navigation.navigate("Match");}}>
-                <Text style={styles.textStyle}>Cancel</Text>
+                <Text style={styles.textStyle}>CANCEL</Text>
                 </Pressable>
                 <Pressable
                 style={[styles.button, styles.buttonClose]}
@@ -67,14 +67,14 @@ export default function FriendMatched({ route, navigation }) {
                     setModalVisible(!modalVisible);
                     navigation.navigate("Match");
                     navigation.navigate("Chat");}}>
-                <Text style={styles.textStyle}>Start Messaging</Text>
+                <Text style={styles.textStyle}>START MESSAGING</Text>
                 </Pressable>
             </View>
           </View>
         </View>
       </Modal>
       <Pressable style={[styles.button, styles.buttonOpen]} onPress={() => setModalVisible(true)}>
-        <Text style={styles.textStyle}>Show Match</Text>
+        <Text style={styles.textStyle}>SHOW MATCH</Text>
       </Pressable>
       </View>
     );
