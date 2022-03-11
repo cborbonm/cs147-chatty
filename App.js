@@ -135,4 +135,9 @@ const styles = StyleSheet.create({
     // shadowRadius: 3,
     // shadowOffset: { height: -5 },
   },
+  headerStyle: {
+    height: 80,
+    shadowColor: 'transparent',
+    fontFamily: 'Lato-Bold',
+  },  
 });

@@ -6,7 +6,7 @@ const colors = {
   lighest_purplegrey: "#aa9ec8",
   lighter_purplegrey: "#7F7598",
   medium_purplegrey: "#b4acc8",
-  background: "#F9F6F1",
+  background: "#FFFFFF",
   pressed_background: "#efedeb",
   accent: "#028ca8",
 };

@@ -72,7 +72,7 @@ export default function NewQuestionPromptList( { route, navigation} ) {
             { opacity: pressed ? 0.5 : 1.0 }, styles.freeform
           ]}
         >
-          <Text style={styles.writeyourown}>Or write your own!</Text>
+          <Text style={styles.writeyourown}>OR WRITE YOUR OWN</Text>
         </Pressable>
     </View>
   );
@@ -90,15 +90,18 @@ const styles = StyleSheet.create({
   questionTopic: {
     fontSize: 15,
     textTransform: 'uppercase',
-    color: Colors.purplegrey,
+    color: Colors.lighter_purple,
     margin: 15,
+    marginBottom: 5,
+    marginTop: 30,
     display: "flex",
+    letterSpacing: 2,
+    fontFamily: 'Lato-Bold',
   },
   questionsDiv: {
     backgroundColor: 'white',
     borderColor: Colors.lavender,
     borderTopWidth: 1,
-    borderBottomWidth: 1,
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -112,12 +115,13 @@ const styles = StyleSheet.create({
   },
   writeyourown: {
     color: 'white',
-    padding: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 30,
     fontSize: 16,
     fontWeight: '500',
   },
   divider: {
-    width: "95%",
+    width: "100%",
     height: 1,
     backgroundColor: Colors.lavender,
   },

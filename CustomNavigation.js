@@ -302,4 +302,9 @@ const styles = StyleSheet.create({
       width: undefined,
       aspectRatio: 364/98,
   },
+  headerStyle: {
+    height: 80,
+    shadowColor: 'transparent',
+    fontFamily: 'Lato-Bold',
+  },
 });

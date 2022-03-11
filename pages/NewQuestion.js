@@ -138,7 +138,7 @@ export default function NewQuestion({ route, navigation }) {
                     { opacity: pressed ? 0.5 : (disabled ? 0.5 : 1.0) }, styles.submitButton
                 ]}
             >
-            <Text style={styles.submitButtonText}>Submit question</Text>
+            <Text style={styles.submitButtonText}>SUBMIT QUESTION</Text>
             </Pressable>
             
         </View>
@@ -226,7 +226,8 @@ const styles = StyleSheet.create({
     },
     submitButtonText: {
         color: 'white',
-        padding: 10,
+        paddingVertical: 10,
+        paddingHorizontal: 30,
         fontSize: 16,
         fontWeight: '500',
     },
