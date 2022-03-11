@@ -19,6 +19,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { createStackNavigator } from "@react-navigation/stack";
 
 import Chat from "./pages/Chat";
+import ChatRoom from "./pages/ChatRoom";
 
 import Match from "./pages/Match";
 import QuickMatchScreen from "./pages/QuickMatchScreen";
@@ -67,6 +68,7 @@ const ChatNavigator = () => {
           })
         } 
         />
+        <Stack.Screen name="ChatRoom" component={ChatRoom} options={{ title: 'Chat' }}/>
       </Stack.Group>
     </Stack.Navigator>
   );

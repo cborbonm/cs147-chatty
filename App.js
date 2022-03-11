@@ -12,6 +12,16 @@ import {
   FlatList 
 } from "react-native";
 import { useState, useEffect } from "react";
+import {
+  setCustomView,
+  setCustomTextInput,
+  setCustomText,
+  setCustomImage,
+  setCustomTouchableOpacity
+} from 'react-native-global-props';
+import AppLoading from 'expo-app-loading';
+import { useFonts } from 'expo-font';
+
 import Colors from "./Themes/colors";
 
 import {ChatNavigator, MatchNavigator, ForumNavigator, NotifNavigator, ProfileNavigator } from './CustomNavigation'
@@ -21,10 +31,18 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
+
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
+
 export default function App() {
+  let [fontsLoaded] = useFonts({
+    Lato: require('./assets/Fonts/Lato-Regular.ttf'),
+    'Lato-Bold': require('./assets/Fonts/Lato-Bold.ttf'),
+  });
+  if (!fontsLoaded) return <AppLoading />;
+
   return (
     <>
       <NavigationContainer>
