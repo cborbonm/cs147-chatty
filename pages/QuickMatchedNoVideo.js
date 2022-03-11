@@ -17,7 +17,7 @@ import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 
 const windowWidth = Dimensions.get('window').width;
 
-export default function QuickMatchedVideo({ route, navigation }) {
+export default function QuickMatchedNoVideo({ route, navigation }) {
     const [modalVisible, setModalVisible] = useState(false);
 
     // hide bottom nav
@@ -65,7 +65,7 @@ export default function QuickMatchedVideo({ route, navigation }) {
                 style={[styles.button, styles.buttonClose]}
                 onPress={() => {
                     setModalVisible(!modalVisible);
-                    navigation.navigate("QuickMatchVideo");}}>
+                    navigation.navigate("QuickMatchNoVideo");}}>
                 <Text style={styles.textStyle}>START CALL</Text>
                 </Pressable>
             </View>
