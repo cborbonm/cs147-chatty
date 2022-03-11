@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
     StyleSheet,
     Text,
@@ -14,26 +14,27 @@ import Colors from "../Themes/colors";
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 
 import { MESSAGES } from '../data/messages';
+import { GiftedChat } from 'react-native-gifted-chat'
 
 export default function Chat ({ route, navigation }) {
-
-  console.log("MESSAGES", MESSAGES);
   const [messages, setMessages] = useState(MESSAGES);
 
-  console.log("messages", messages);
-
+  const addMessages = (newMessage, index) => {
+    let messagesCopy = [...messages];
+    messagesCopy[index].chat.push(newMessage);
+    setMessages(messagesCopy);
+  }
 
   
-  function ChatRoomPreview ({ chatHist, index, navigation}) {
+  function ChatRoomPreview ({ chatHist, index, navigation, addMessages}) {
 
     let fullChat = chatHist.chat
     let lastMessage = fullChat[fullChat.length-1];
 
-    console.log("chatHist", chatHist);
 
     return (
       <Pressable // press whole row
-        onPress={ () => navigation.navigate("ChatRoom", { chatWith: chatHist.chatWith, chat: chatHist.chat, setMessages: setMessages }) } 
+        onPress={ () => navigation.navigate("ChatRoom", { chatWith: chatHist.chatWith, chat: chatHist.chat, addMessages: addMessages, index: index }) } 
         style={({ pressed }) => [
         {
           backgroundColor: pressed ? Colors.pressed_background : Colors.background,
@@ -62,6 +63,7 @@ return (
             chatHist={item}
             index={index}
             navigation={navigation}
+            addMessages={addMessages}
           /> 
         }
         keyExtractor={(item) => item.key}

@@ -19,11 +19,9 @@ export function ChatRoom({ route, navigation }) {
   }, [navigation]);
 
   const [messages, setMessages] = useState([]);
-  const { chat, chatWith } = route.params;
+  const { chat, chatWith, addMessages, index } = route.params;
 
-  console.log(route.params);
-
-  navigation.setOptions({ headerTitle: chatWith, });
+  navigation.setOptions({ headerTitle: chatWith });
 
   useEffect(() => {
     setMessages(chat);
@@ -31,6 +29,7 @@ export function ChatRoom({ route, navigation }) {
  
   const onSend = useCallback((messages = []) => {
     setMessages(previousMessages => GiftedChat.append(previousMessages, messages))
+    addMessages(messages[0], index);
   }, [])
  
   return (
@@ -40,6 +39,7 @@ export function ChatRoom({ route, navigation }) {
       user={{
         _id: 1,
       }}
+      inverted={false}
     />
   )
 }
