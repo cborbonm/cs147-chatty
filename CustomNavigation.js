@@ -133,6 +133,33 @@ const MatchNavigator = () => {
           })
         } 
         />
+        <Stack.Screen name="FriendMatchScreen" 
+          component={FriendMatchScreen} 
+          options= {({ navigation }) => ({
+            title: 'Find Friend',
+          })
+        } 
+        />
+      </Stack.Group>
+      <Stack.Group screenOptions={{ 
+        headerBackTitle: null, headerStyle: {
+          backgroundColor: Colors.lighest_purplegrey,
+          opacity: 0.75,
+          borderBottomColor: Colors.lighter_purplegrey,
+          borderBottomWidth: 1,
+        }, 
+        headerTintColor: Colors.accent, 
+        headerTitleStyle: {
+          fontWeight: '400', 
+          color: Colors.chatty, 
+        },
+      }}>
+      <Stack.Screen name="FriendMatched" 
+          component={FriendMatched} 
+          options= {({ navigation }) => ({
+            title: 'Find Friend',
+          })} 
+        />
       </Stack.Group>
     </Stack.Navigator>
   );
