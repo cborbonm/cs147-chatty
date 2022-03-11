@@ -65,6 +65,7 @@ export default function FriendMatched({ route, navigation }) {
                 style={[styles.button, styles.buttonClose]}
                 onPress={() => {
                     setModalVisible(!modalVisible);
+                    navigation.navigate("Match");
                     navigation.navigate("Chat");}}>
                 <Text style={styles.textStyle}>Start Messaging</Text>
                 </Pressable>
