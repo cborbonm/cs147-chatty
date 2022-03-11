@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
     },
     name: {
         fontSize: 16,
-        fontWeight: 'bold',
+        fontFamily: 'Lato-Bold',
     },
     name_timestamp_container: {
         marginBottom: 10,

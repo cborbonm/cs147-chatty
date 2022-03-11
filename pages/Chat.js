@@ -21,14 +21,19 @@ export default function Chat ({ route, navigation }) {
   const [messages, setMessages] = useState(MESSAGES);
 
   console.log("messages", messages);
+
+
+  
   function ChatRoomPreview ({ chatHist, index, navigation}) {
 
     let fullChat = chatHist.chat
     let lastMessage = fullChat[fullChat.length-1];
-    console.log("lastMessage", lastMessage);
+
+    console.log("chatHist", chatHist);
+
     return (
       <Pressable // press whole row
-        onPress={ () => navigation.navigate("ChatRoom", { chat: chatHist.chat }) } 
+        onPress={ () => navigation.navigate("ChatRoom", { chatWith: chatHist.chatWith, chat: chatHist.chat, setMessages: setMessages }) } 
         style={({ pressed }) => [
         {
           backgroundColor: pressed ? Colors.pressed_background : Colors.background,
@@ -37,11 +42,11 @@ export default function Chat ({ route, navigation }) {
         ]}
       >
           <View style={styles.left}>
-            <FontAwesome name="user-circle" size={40} color={Colors.chatty} />
+            <FontAwesome name="user-circle" size={60} color={Colors.chatty} />
           </View>
           <View style={styles.right}>
-            <Text>{lastMessage.user.name}</Text>
-            <Text>{lastMessage.text}</Text>
+            <Text style={styles.name}>{chatHist.chatWith}</Text>
+            <Text style={styles.message_preview}>{lastMessage.text}</Text>
           </View>
       </Pressable>
     );
@@ -86,7 +91,14 @@ const styles = StyleSheet.create({
     flex: 2,
   },
   right: {
-      flex: 8,
-      paddingLeft: 0,
+    flex: 8,
+    paddingLeft: 0,
+  },
+  name: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  message_preview: {
+    fontSize: 16,
   },
 });

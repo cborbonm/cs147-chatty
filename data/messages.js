@@ -5,9 +5,11 @@ export const MESSAGES = [
     {  
         key : 1, 
         chat: CHAT2,
+        chatWith: 'John',
     },
     {
         key : 2, 
         chat: CHAT1,
+        chatWith: 'Chatty',
     },
 ];

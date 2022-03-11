@@ -19,7 +19,11 @@ export function ChatRoom({ route, navigation }) {
   }, [navigation]);
 
   const [messages, setMessages] = useState([]);
-  const { chat } = route.params;
+  const { chat, chatWith } = route.params;
+
+  console.log(route.params);
+
+  navigation.setOptions({ headerTitle: chatWith, });
 
   useEffect(() => {
     setMessages(chat);
