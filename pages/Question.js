@@ -35,7 +35,7 @@ function pushComment(comments, com, i) {
     comments.push (
         <View key={i} style={[styles.post, {borderBottomWidth: 0}]}>
             <View style={styles.left}>
-                <FontAwesome name="user-circle" size={24} color={Colors.chatty} />
+                <Image source={com.user.avatar} style={styles.avatar} />
             </View>
             <View style={styles.right}>
                 <View style={styles.name_timestamp_container}>
@@ -106,7 +106,7 @@ export function Question({ route, navigation }) {
                 {/* { useEffect(() => scrollRef.current.scrollTo({y:0})) } */}
                 <View style={styles.post}>
                     <View style={styles.left}>
-                        <FontAwesome name="user-circle" size={24} color={Colors.chatty} />
+                        <Image source={question.user.avatar} style={styles.avatar} />
                     </View>
                     <View style={styles.right}>
                         <View style={styles.name_timestamp_container}>
@@ -252,7 +252,12 @@ const styles = StyleSheet.create({
     },
     right: {
         flex: 9,
-        paddingLeft: 0,
+        paddingLeft: 10,
+    },
+    avatar: {
+        width: 40,
+        height: 40,
+        borderRadius: 99999,
     },
     name: {
         fontSize: 16,

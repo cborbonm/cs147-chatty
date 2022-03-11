@@ -14,9 +14,6 @@ import Colors from "../Themes/colors";
 import Constants from 'expo-constants';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import { db } from "../firebase";
-import { doc, getDoc } from "firebase/firestore";
-
 
 import { FontAwesome } from '@expo/vector-icons';
 

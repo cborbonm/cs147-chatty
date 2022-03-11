@@ -73,7 +73,8 @@ export function Forum({ navigation }) {
                 ]}
             >
                 <View style={styles.left}>
-                    <FontAwesome name="user-circle" size={24} color={Colors.chatty} />
+                    <Image source={question.user.avatar} style={styles.avatar} />
+                    {/* <FontAwesome name="user-circle" size={24} color={Colors.chatty} /> */}
                 </View>
                 <View style={styles.right}>
                     <View style={styles.name_timestamp_container}>
@@ -159,7 +160,7 @@ const styles = StyleSheet.create({
     },
     right: {
         flex: 9,
-        paddingLeft: 0,
+        paddingLeft: 10,
     },
     name: {
         fontSize: 16,
@@ -179,6 +180,11 @@ const styles = StyleSheet.create({
     num_comments: {
         paddingLeft: 5,
         fontSize: 16,
+    },
+    avatar: {
+        width: 40,
+        height: 40,
+        borderRadius: 99999,
     },
 
     //header

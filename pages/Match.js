@@ -8,10 +8,7 @@ import {
 import Colors from "../Themes/colors";
 import { MaterialIcons } from '@expo/vector-icons'; 
 import { Entypo } from '@expo/vector-icons'; 
-
-import { questions } from '../data/questions';
-import { db } from "../firebase";
-import { doc, getDoc } from "firebase/firestore";
+import colors from '../Themes/colors';
 
 export function Match({ navigation }) {
     return (
@@ -46,13 +43,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     quickmatch_icon_container: {
-        backgroundColor: '#FBBC05',
+        backgroundColor: Colors.yellow,
         borderRadius: 30,
         padding: 20,
         marginBottom: 20,
     },
     friendmatch_icon_container: {
-        backgroundColor: '#1D9BF0',
+        backgroundColor: Colors.blue,
         borderRadius: 30,
         padding: 20,
         marginBottom: 20,

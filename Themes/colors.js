@@ -8,7 +8,9 @@ const colors = {
   medium_purplegrey: "#b4acc8",
   background: "#FFFFFF",
   pressed_background: "#efedeb",
-  accent: "#028ca8",
+  accent: "#1D9BF0", //"#028ca8",
+  yellow: "#FBBC05",
+  blue: "#1D9BF0",
 };
 
 export default colors;

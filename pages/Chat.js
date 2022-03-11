@@ -14,7 +14,6 @@ import Colors from "../Themes/colors";
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 
 import { MESSAGES } from '../data/messages';
-import { GiftedChat } from 'react-native-gifted-chat'
 
 export default function Chat ({ route, navigation }) {
   const [messages, setMessages] = useState(MESSAGES);
@@ -43,7 +42,7 @@ export default function Chat ({ route, navigation }) {
         ]}
       >
           <View style={styles.left}>
-            <FontAwesome name="user-circle" size={60} color={Colors.chatty} />
+            <Image source={chatHist.avatar} style={styles.avatar}/>
           </View>
           <View style={styles.right}>
             <Text style={styles.name}>{chatHist.chatWith}</Text>
@@ -102,5 +101,10 @@ const styles = StyleSheet.create({
   },
   message_preview: {
     fontSize: 16,
+  },
+  avatar: {
+    width: 60,
+    height: 60,
+    borderRadius: 99999,
   },
 });

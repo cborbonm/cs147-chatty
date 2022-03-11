@@ -6,7 +6,7 @@ export const CHAT1 = [
         user: {
             _id: 2,
             name: 'Chatty',
-            avatar: 'https://placeimg.com/140/140/any',
+            avatar: require('../assets/Photos/logo.png'),
         },
     },
 ];
