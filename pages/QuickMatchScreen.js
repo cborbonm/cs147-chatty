@@ -56,7 +56,7 @@ export default function QuickMatchScreen({ route, navigation }) {
                     navigation.navigate("QuickMatchNoVideo");
                 }
                 }}>
-                <Text style={styles.button_text}>Find a Match</Text>
+                <Text style={styles.button_text}>FIND MATCH</Text>
             </TouchableOpacity>
         </View>
     );
@@ -104,8 +104,11 @@ const styles = StyleSheet.create({
         margin: 25,
     },
     button_text: {
-        fontSize: 22,
         color: 'white',
+        paddingVertical: 10,
+        paddingHorizontal: 30,
+        fontSize: 16,
+        fontWeight: '500',
     },
 
     // to bring back the bottom nav bar on the previous page

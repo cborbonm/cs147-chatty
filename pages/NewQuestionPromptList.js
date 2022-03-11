@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     display: "flex",
   },
   questionTopic: {
-    fontSize: 15,
+    fontSize: 16,
     textTransform: 'uppercase',
     color: Colors.lighter_purple,
     margin: 15,

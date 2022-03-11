@@ -25,6 +25,8 @@ import Match from "./pages/Match";
 import QuickMatchScreen from "./pages/QuickMatchScreen";
 import QuickMatchVideo from "./pages/QuickMatchVideo";
 import QuickMatchNoVideo from "./pages/QuickMatchNoVideo";
+import FriendMatchScreen from "./pages/FriendMatchScreen";
+import FriendMatched from "./pages/FriendMatched";
 import CallEnded from "./pages/CallEnded";
 
 import Forum from "./pages/Forum";
@@ -46,16 +48,9 @@ const ChatNavigator = () => {
     // contains all child component screens within a stack.
     <Stack.Navigator initialRouteName="Chat">
       <Stack.Group screenOptions={{ 
-        headerBackTitle: null, headerStyle: {
-          backgroundColor: Colors.background,
-          borderBottomColor: Colors.lavender,
-          borderBottomWidth: 1,
-        }, 
+        headerBackTitle: null, headerStyle: styles.headerStyle, 
         headerTintColor: Colors.accent, 
-        headerTitleStyle: {
-          fontWeight: '400', 
-          color: Colors.chatty, 
-        },
+        headerTitleStyle: styles.headerTitleStyle,
       }}>
         <Stack.Screen name="Chat" 
           component={Chat} 
@@ -80,16 +75,9 @@ const MatchNavigator = () => {
   return (
     <Stack.Navigator initialRouteName="Match">
       <Stack.Group screenOptions={{ 
-        headerBackTitle: null, headerStyle: {
-          backgroundColor: Colors.background,
-          borderBottomColor: Colors.lavender,
-          borderBottomWidth: 1,
-        }, 
+        headerBackTitle: null, headerStyle: styles.headerStyle, 
         headerTintColor: Colors.accent, 
-        headerTitleStyle: {
-          fontWeight: '400', 
-          color: Colors.chatty, 
-        },
+        headerTitleStyle: styles.headerTitleStyle,
       }}>
         <Stack.Screen name="Match" 
           component={Match} 
@@ -172,16 +160,9 @@ const ForumNavigator = () => {
     /* change header: https://stackoverflow.com/questions/45329620/change-navigation-header-background-color */
     <Stack.Navigator initialRouteName="Forum">
       <Stack.Group screenOptions={{ 
-        headerBackTitle: null, headerStyle: {
-          backgroundColor: Colors.background,
-          borderBottomColor: Colors.lavender,
-          borderBottomWidth: 1,
-        }, 
+        headerBackTitle: null, headerStyle: styles.headerStyle, 
         headerTintColor: Colors.accent, 
-        headerTitleStyle: {
-          fontWeight: '400', 
-          color: Colors.chatty, 
-        },
+        headerTitleStyle: styles.headerTitleStyle,
       }}>
         {/* pass props: https://stackoverflow.com/questions/60439210/how-to-pass-props-to-screen-component-with-a-tab-navigator */}
         <Stack.Screen name="Forum" 
@@ -230,7 +211,7 @@ const ForumNavigator = () => {
             })
           }
         />
-        <Stack.Screen name="LanguageDropDown" component={LanguageDropDown} options={{ title: 'Choose Language' }}/>
+        <Stack.Screen name="LanguageDropDown" component={LanguageDropDown} options={{ title: 'Select Language' }}/>
         <Stack.Screen name="Question" component={Question} options={{ title: 'Question' }}/>
         <Stack.Screen name="QuestionPosted" 
           component={QuestionPosted} 
@@ -261,16 +242,9 @@ const ProfileNavigator = () => {
   return (
     <Stack.Navigator initialRouteName="Profile">
       <Stack.Group screenOptions={{ 
-        headerBackTitle: null, headerStyle: {
-          backgroundColor: Colors.background,
-          borderBottomColor: Colors.lavender,
-          borderBottomWidth: 1,
-        }, 
+        headerBackTitle: null, headerStyle: styles.headerStyle, 
         headerTintColor: Colors.accent, 
-        headerTitleStyle: {
-          fontWeight: '400', 
-          color: Colors.chatty, 
-        },
+        headerTitleStyle: styles.headerTitleStyle,
       }}>
         <Stack.Screen name="Profile" 
           component={Profile} 
@@ -294,16 +268,9 @@ const NotifNavigator = () => {
   return (
     <Stack.Navigator initialRouteName="Notifications">
       <Stack.Group screenOptions={{ 
-        headerBackTitle: null, headerStyle: {
-          backgroundColor: Colors.background,
-          borderBottomColor: Colors.lavender,
-          borderBottomWidth: 1,
-        }, 
+        headerBackTitle: null, headerStyle: styles.headerStyle, 
         headerTintColor: Colors.accent, 
-        headerTitleStyle: {
-          fontWeight: '400', 
-          color: Colors.chatty, 
-        },
+        headerTitleStyle: styles.headerTitleStyle,
       }}>
         <Stack.Screen name="Notifications" 
           component={Notifications} 
@@ -330,8 +297,15 @@ const styles = StyleSheet.create({
       aspectRatio: 364/98,
   },
   headerStyle: {
-    height: 80,
-    shadowColor: 'transparent',
+    height: 100,
+    backgroundColor: Colors.background,
+    borderBottomColor: Colors.lavender,
+    borderBottomWidth: 1,
+  },
+  headerTitleStyle: {
     fontFamily: 'Lato-Bold',
+    fontWeight: '400', 
+    fontSize: 20,
+    color: Colors.chatty, 
   },
 });

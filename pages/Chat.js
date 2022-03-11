@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 18,
-    fontWeight: 'bold',
+    fontFamily: 'Lato-Bold',
   },
   message_preview: {
     fontSize: 16,

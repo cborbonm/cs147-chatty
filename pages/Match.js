@@ -58,7 +58,11 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     text: {
+        fontSize: 16,
+        fontSize: 16,
+        textTransform: 'uppercase',
         color: Colors.purplegrey,
-        fontSize: 19,
+        display: "flex",
+        fontFamily: 'Lato-Bold',
     },
 });
