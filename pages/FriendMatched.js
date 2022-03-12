@@ -41,7 +41,7 @@ export default function FriendMatched({ route, navigation }) {
             <View style={styles.modalHeader}>
                 <Text style={styles.modalText}>You have a match!</Text>
             </View>
-            <FontAwesome name="user-circle" size={120} color={Colors.lighter_purple} />
+            <Image source={require("../assets/Photos/anna.jpeg")} style={styles.avatar} />
             <Text style={styles.name}>Anna</Text>
             <View style={styles.textRow}>
                 <Text>Learning:</Text>
@@ -50,7 +50,7 @@ export default function FriendMatched({ route, navigation }) {
             <View style={styles.bar}><View style={styles.progressBar}></View></View>
             <View style={styles.textRow}>
                 <Text>Native:</Text>
-                <Text>Spanish (Mexican)</Text>
+                <Text>French (France)</Text>
             </View>
             <View style={styles.bar2}></View>
             <View style={styles.buttons}>
@@ -102,6 +102,7 @@ const styles = StyleSheet.create({
     },
     name: {
         fontSize: 30,
+        fontFamily: "Lato-Bold",
         fontWeight: '600',
         color: Colors.chatty,
         margin: 15,
@@ -176,4 +177,9 @@ const styles = StyleSheet.create({
         color: 'white',
         margin: 2,
     },
+    avatar: {
+        width: 120,
+        height: 120,
+        borderRadius: 99999,
+    }
 });

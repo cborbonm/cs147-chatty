@@ -2,13 +2,10 @@ import React, { useState, useCallback, useEffect } from 'react';
 import {
     StyleSheet,
     Text,
-    View,
-    Pressable,
-    FlatList,
 } from 'react-native';
 import Colors from "../Themes/colors";
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { GiftedChat } from 'react-native-gifted-chat'
+import { MaterialCommunityIcons, MaterialIcons, Ionicons, FontAwesome } from '@expo/vector-icons';
  
 export function ChatRoom({ route, navigation }) {
 
@@ -28,7 +25,7 @@ export function ChatRoom({ route, navigation }) {
   }, [])
  
   const onSend = useCallback((messages = []) => {
-    setMessages(previousMessages => GiftedChat.append(previousMessages, messages))
+    setMessages(previousMessages => GiftedChat.append(previousMessages, messages));
     addMessages(messages[0], index);
   }, [])
  

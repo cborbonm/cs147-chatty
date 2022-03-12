@@ -178,7 +178,7 @@ export function Question({ route, navigation }) {
                 <View style={styles.bottom_action}>
                 <View alignItems='baseline' flexDirection='row' flex={1}>
                     <View style={styles.comment_bar}>
-                    <FontAwesome name="user-circle" size={36} color={Colors.chatty} />
+                        <FontAwesome name="user-circle" size={36} color={Colors.chatty} />
                     <TextInput
                         onChangeText={setText}
                         value={text}
@@ -195,11 +195,12 @@ export function Question({ route, navigation }) {
                             {
                                 let newComment = {
                                     user: { 
-                                        name:'me',
+                                        name:'Jane',
                                         native: {
                                             language:'en',
                                             location: 'US',
                                         },
+                                        avatar: require('../assets/Photos/jane.jpeg'),
                                     },
                                     timestamp: 'Just now',
                                     comment: text,

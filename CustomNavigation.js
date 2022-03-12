@@ -211,7 +211,7 @@ const ForumNavigator = () => {
               title: 'New Question',
               headerRight: () =>
                 <Button
-                  color="#028ca8"
+                  color={Colors.accent}
                   title="Cancel"
                   onPress={ () => {
                     navigation.navigate("Forum");

@@ -45,8 +45,11 @@ export default function Chat ({ route, navigation }) {
             <Image source={chatHist.avatar} style={styles.avatar}/>
           </View>
           <View style={styles.right}>
-            <Text style={styles.name}>{chatHist.chatWith}</Text>
-            <Text style={styles.message_preview}>{lastMessage.text}</Text>
+            <View style={styles.name_timestamp_container}>
+              <Text style={styles.name}>{chatHist.chatWith}</Text>
+              <Text style={styles.timestamp}>{lastMessage.createdAt.toLocaleTimeString([], {hour: 'numeric', minute:'2-digit'})}</Text>
+            </View>
+            <Text style={styles.message_preview} numberOfLines={2}>{lastMessage.text}</Text>
           </View>
       </Pressable>
     );
@@ -101,10 +104,17 @@ const styles = StyleSheet.create({
   },
   message_preview: {
     fontSize: 16,
+    color: Colors.purplegrey,
   },
   avatar: {
     width: 60,
     height: 60,
     borderRadius: 99999,
   },
+  name_timestamp_container: {
+    marginBottom: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'baseline',
+  }
 });

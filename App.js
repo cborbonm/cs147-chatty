@@ -66,7 +66,7 @@ export default function App() {
               tabBarIcon: ({ color }) => (
                 <Ionicons name="chatbubble-ellipses" size={24} color={color} />
               ),
-              title: '',
+              title: 'Messages',
             }}
           />
           <Tab.Screen
@@ -76,7 +76,7 @@ export default function App() {
               tabBarIcon: ({ color }) => (
                 <MaterialCommunityIcons name="account-search" size={24} color={color} />
               ),
-              title: '',
+              title: 'Match',
             }}
           />
           <Tab.Screen
@@ -87,10 +87,10 @@ export default function App() {
               tabBarIcon: ({ color }) => (
                 <MaterialCommunityIcons name="book-open-variant" size={24} color={color} />
               ),
-              title: '',
+              title: 'Learn',
             }}
           />
-          <Tab.Screen
+          {/* <Tab.Screen
             name="NotifNav"
             component={NotifNavigator}
             headerShown={false}
@@ -100,7 +100,7 @@ export default function App() {
               ),
               title: '',
             }}
-          />
+          /> */}
           <Tab.Screen
             name="ProfileNav"
             component={ProfileNavigator}
@@ -108,7 +108,7 @@ export default function App() {
               tabBarIcon: ({ color }) => (
                 <FontAwesome name="user-circle" size={24} color={color} />
               ),
-              title: '',
+              title: 'Profile',
             }}
           />
         </Tab.Navigator>

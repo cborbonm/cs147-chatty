@@ -106,7 +106,7 @@ export default function NewQuestion({ route, navigation }) {
                 onPress={ () => {
                     let newQuestion = {
                         user: { 
-                            name:'me',
+                            name:'Jane',
                             native: {
                                 language:'en',
                                 location: 'US',
@@ -116,6 +116,7 @@ export default function NewQuestion({ route, navigation }) {
                                 location: '',
                                 level: 1,
                             },
+                            avatar: require('../assets/Photos/jane.jpeg'),
                         },
                         timestamp: 'Just now',
                         question: text,
