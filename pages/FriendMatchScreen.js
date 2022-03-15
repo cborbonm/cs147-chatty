@@ -72,4 +72,15 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: '500',
     },
+    bottom_action_goback: {
+        backgroundColor: Colors.background,
+        // height: 90,
+        // paddingTop: 10,
+        borderTopColor: Colors.lavender,
+        borderTopWidth: 1,
+        // shadowColor: Colors.purplegrey,
+        // shadowOpacity: 0.3,
+        // shadowRadius: 3,
+        // shadowOffset: { height: -5 },
+      },
 });
