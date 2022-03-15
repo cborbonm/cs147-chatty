@@ -50,7 +50,7 @@ export default function QuickMatchedVideo({ route, navigation }) {
             <View style={styles.bar}><View style={styles.progressBar}></View></View>
             <View style={styles.textRow}>
                 <Text>Native:</Text>
-                <Text>English (American)</Text>
+                <Text>English (US)</Text>
             </View>
             <View style={styles.bar2}></View>
             <View style={styles.buttons}>
@@ -81,7 +81,7 @@ export default function QuickMatchedVideo({ route, navigation }) {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: Colors.lighest_purplegrey,
+        backgroundColor: Colors.lightest_purplegrey,
         opacity: 0.75,
         display: "flex",
         flex: 1,
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         height: 5,
         width: 225,
-        backgroundColor: Colors.lighest_purplegrey,
+        backgroundColor: Colors.lightest_purplegrey,
         opacity: 0.70,
         margin: 7,
         borderRadius: 10,
@@ -125,14 +125,14 @@ const styles = StyleSheet.create({
         display: 'flex',
         height: 5,
         width: 75,
-        backgroundColor: '#F1C423',
+        backgroundColor: Colors.yellow,
         borderRadius: 10,
     },
     bar2: {
         display: 'flex',
         height: 5,
         width: 225,
-        backgroundColor: '#1D9BF0',
+        backgroundColor: Colors.blue,
         margin: 7,
         borderRadius: 10,
     },

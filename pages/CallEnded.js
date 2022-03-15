@@ -9,8 +9,6 @@ import {
 } from 'react-native';
 import Colors from "../Themes/colors";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { db } from "../firebase";
-import { doc, getDoc } from "firebase/firestore";
 
 export function CallEnded({ navigation }) {
   return (

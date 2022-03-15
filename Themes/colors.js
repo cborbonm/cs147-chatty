@@ -3,7 +3,7 @@ const colors = {
   lighter_purple: "#783F8E",
   lavender: "#C8C6D7",
   purplegrey: "#4A4063",
-  lighest_purplegrey: "#aa9ec8",
+  lightest_purplegrey: "#aa9ec8",
   lighter_purplegrey: "#7F7598",
   medium_purplegrey: "#b4acc8",
   background: "#FFFFFF",
@@ -11,6 +11,7 @@ const colors = {
   accent: "#1D9BF0", //"#028ca8",
   yellow: "#FBBC05",
   blue: "#1D9BF0",
+  red: "#EA4335",
 };
 
 export default colors;

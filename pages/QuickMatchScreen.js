@@ -44,7 +44,7 @@ export default function QuickMatchScreen({ route, navigation }) {
                 <Text style={styles.toggle_text}> Enable Video </Text>
                 <Switch style={styles.toggle}
                 trackColor={{ false: "#767577", true: "#34c759" }}
-                ios_backgroundColor={Colors.lighest_purplegrey}
+                ios_backgroundColor={Colors.lightest_purplegrey}
                 onValueChange={toggleSwitch}
                 value={isEnabled}
                 />

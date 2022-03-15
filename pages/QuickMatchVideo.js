@@ -12,9 +12,6 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Camera } from 'expo-camera';
 import { Video } from 'expo-av';
 
-import { db } from "../firebase";
-import { doc, getDoc } from "firebase/firestore";
-
 export function QuickMatchVideo({ navigation }) {
   //camera vars
   const [hasPermission, setHasPermission] = useState(null);

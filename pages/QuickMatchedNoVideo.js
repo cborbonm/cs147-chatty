@@ -81,7 +81,7 @@ export default function QuickMatchedNoVideo({ route, navigation }) {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: Colors.lighest_purplegrey,
+        backgroundColor: Colors.lightest_purplegrey,
         opacity: 0.75,
         display: "flex",
         flex: 1,
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         height: 5,
         width: 225,
-        backgroundColor: Colors.lighest_purplegrey,
+        backgroundColor: Colors.lightest_purplegrey,
         opacity: 0.70,
         margin: 7,
         borderRadius: 10,
